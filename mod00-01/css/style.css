@@ -1,0 +1,62 @@
+body {
+	background: url("../img/bg2.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	font-family: 'Indie Flower', cursive;
+}
+
+p {
+
+	font-family: 'Josefin Sans', sans-serif;
+
+} 
+h1,
+h2 {
+
+	color: black;
+	
+}
+h1 {
+
+	font-size: 50px;
+	font-weight: normal;
+	margin-bottom: 0;
+}
+
+h2 {
+	font-size: 18px;
+	margin-top: 0;
+}
+
+.bio {
+
+	font-size: 14px;
+
+}
+
+.ako {
+
+	height: 150px;
+	border-radius: 50%;
+	border-style: solid;
+	border-color: black;
+
+}
+
+/*
+*
+* wrapper containerss
+*
+*/
+
+.wrapper {
+
+	width: 50%;
+	/*margin: 0 auto;*/
+	text-align: center;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
