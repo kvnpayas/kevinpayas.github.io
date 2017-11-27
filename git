@@ -1,0 +1,14 @@
+$ git status
+(to check current changes to directory)
+
+$ git add .
+(to move all changes to staging area)
+
+$ git commit -m "your message. must describe your changes made."
+(to create a new commit(version))
+
+$ git push github master
+(to move all commits to remote repository)
+
+$ git log
+(To check all versions)
