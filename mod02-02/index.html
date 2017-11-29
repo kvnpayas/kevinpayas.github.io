@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="utf-8">
+
+	<title>Activity | Forms</title>
+
+	<style type="text/css">
+		fieldset {
+			width: 300px;
+
+		}
+		textarea {
+
+			width: 250px;
+			height: 50px;
+		}
+
+	</style>
+
+</head>
+<body>
+	<form action="http://www.exapmle.com/subsbcripe.php" method="post">
+		<fieldset>
+			<legend>Your Details:</legend>
+			<label>Name: </label>
+			<input type="text" name="name" required><br>
+			<label>Email: </label>
+			<input type="email" name="emailAdd" required>
+		</fieldset>
+
+		<fieldset>
+			<legend>Your Review: </legend><br>
+			
+			<label>How did you hear about us? </label>
+			<select name="selected">
+				<option>Google</option>
+				<option>Facebook</option>
+				<option>Twitter</option>
+				<option>Instagram</option>
+				<option>Ads</option>
+				<option>Blogs</option>
+			</select>
+			<br><br>
+
+			<label>Would you visit again? </label><br>
+			<input type="radio" name="test">Yes
+			<input type="radio" name="test">No
+			<input type="radio" name="test">Maybe<br><br>
+
+			<label>Comments: </label><br>
+			<textarea></textarea><br><br>
+
+			<input type="checkbox" name="signMe">Sign me up for email updates<br>
+			<input type="submit" name="submit" value="Submit Review">
+		</fieldset>
+	</form>
+
+</body>
+</html>
