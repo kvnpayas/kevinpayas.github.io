@@ -1,0 +1,95 @@
+/* Css Reset */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.clear:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+/*
+* Navigation
+*/
+
+.wrapper {
+	height: 100vh;
+	width: 100%
+	background-color: blue;
+	overflow: hidden;
+
+}
+
+.navigation {
+	background-color: grey;
+	width: 15%;
+	float: left;
+	height: 100%;
+	padding: 20px;
+	position: fixed;
+}
+
+.logo {
+	height: 120px;
+	width: 150px;
+	background-color: white;
+	margin: 0 auto;
+}
+
+div.navigation > nav > ul {
+	list-style-type: none;
+	text-align: center;
+	width: 20%;
+}
+
+div.navigation > nav > ul > li {
+	line-height: 50px;
+}
+
+div.navigation > nav {
+	height: 300px;
+	margin-top: 10px;
+}
+
+div.navigation > nav > ul > li > a {
+	padding: 10px 30px;
+	background-color: lightblue;
+}
+
+/*
+* Content
+*/
+.content {
+	background-color: lightgrey;
+	width: 80%;
+	overflow: auto;
+	height: 100%;
+}
+
+.home {
+	background-color: green;
+	height: 500PX;
+}
+
+.about {
+	background-color: red;
+	height: 500PX;
+}
+
+.services {
+	background-color: yellow;
+	height: 500PX;
+}
+
+.projects {
+	background-color: violet;
+	height: 500PX;
+}
+
+.gallery {
+	background-color: pink;
+	height: 500PX;
+}
