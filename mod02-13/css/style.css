@@ -19,34 +19,53 @@
 	height: 100vh;
 	width: 100%
 	background-color: blue;
-	overflow: hidden;
+	/*overflow: hidden;*/
 
 }
 
 .navigation {
-	background-color: grey;
+	background-color: #d4a59a;
 	width: 15%;
 	float: left;
 	height: 100%;
 	padding: 20px;
 	position: fixed;
+	/*text-align: center;*/
 }
 
+
 .logo {
-	height: 120px;
-	width: 150px;
-	background-color: white;
-	margin: 0 auto;
-}
+	height: 20%;
+	width: 100%;
+	/*background-color: white;*/
+	/*margin: 0 auto;*/
+	text-align: center;
+	/*position: relative;*/
+	background-image: url('http://bluethumbcreatives.com/wp-content/uploads/2017/01/bluethumb-vigan-city.gif');
+	background-position: center;
+	background-size: 190px 140px;
+	background-repeat: no-repeat;
+
+}	
 
 div.navigation > nav > ul {
 	list-style-type: none;
 	text-align: center;
-	width: 20%;
+	/*width: 20%;*/
 }
 
-div.navigation > nav > ul > li {
-	line-height: 50px;
+div.navigation > nav > ul > a > li {
+	/*line-height: 50px;*/
+	/*display: inline-block;*/
+	margin: 5px auto;
+	background-color: #5c2018;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+div.navigation > nav > ul > a > li:hover {
+	background-color: #bc4639;
+
 }
 
 div.navigation > nav {
@@ -54,9 +73,13 @@ div.navigation > nav {
 	margin-top: 10px;
 }
 
-div.navigation > nav > ul > li > a {
-	padding: 10px 30px;
-	background-color: lightblue;
+div.navigation > nav > ul > a {
+	/*padding: 10px;*/
+	text-decoration: none;
+	font-family: 'Princess Sofia', cursive;
+	color: white;
+	font-size: 1em;
+	
 }
 
 /*
@@ -64,32 +87,95 @@ div.navigation > nav > ul > li > a {
 */
 .content {
 	background-color: lightgrey;
-	width: 80%;
-	overflow: auto;
+	width: 85%;
+	/*overflow: auto;*/
 	height: 100%;
+	float:right;
 }
+
+/*
+* Home
+*/
 
 .home {
 	background-color: green;
-	height: 500PX;
+	height: 800px;
+	background-image: url("../img/logo.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	padding: 20px;
 }
 
+.homeLogo {
+	width: 45%;
+	height: 45%;
+	margin: 160px auto;
+	border: 2px solid black;
+	/*background-color: rgba(92, 32, 24, 0.85);*/
+	background-color: rgba(212, 165, 154, 0.5);
+	text-align: center;
+	font-family: 'Princess Sofia', cursive;
+	color: white;
+	font-size: 2em;
+	border-radius: 5%;
+
+}
+ 
+.homeLogo h2 {
+	width: 50%;
+	margin: 80px auto;
+}
+
+/*
+* About Page
+*/
 .about {
-	background-color: red;
-	height: 500PX;
+	background-color: #bc4639;
+	height: 800PX;
+	padding: 40px;
+}
+
+.aboutContainer {
+	/*background-color: rgba(92, 32, 24, 0.5);*/
+	background-color: rgba(212, 165, 154, 0.5);
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+.aboutContainer h2 {
+	width: 80%;
+	text-align: center;
+	margin: 0 auto;
+	font-family: 'Princess Sofia', cursive;
+	color: white;
+}
+
+.cont {
+	width: 100%;
+	height: 100%;
+	padding: 20px;
+}
+
+.aboutLogo {
+	height: 20%;
+	width: 20%;
+	background-color: white;
 }
 
 .services {
 	background-color: yellow;
-	height: 500PX;
+	height: 800PX;
 }
 
 .projects {
 	background-color: violet;
-	height: 500PX;
+	height: 800PX;
 }
 
 .gallery {
 	background-color: pink;
-	height: 500PX;
+	height: 800PX;
 }
