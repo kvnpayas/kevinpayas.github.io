@@ -43,3 +43,35 @@ $('section.awSlider .carousel').on('slid.bs.carousel', function () {
 Philips ambilight tv
 Üzerine gleince duruyor slide
 */
+
+$('body').on('click','#iconFooter',function(){
+	console.log('Working'); /* for debugging */
+    if($('#footer').hasClass("visible"))
+    {
+        $('#iconFooter').animate({
+            bottom: '-5%'
+        },250);
+        $('#footer').animate({
+            bottom: '-29%'
+        },250).toggleClass("visible");
+    }else
+    { 
+        $('#iconFooter').animate({
+            bottom: '24%'
+        },250);
+        $('#footer').animate({
+            bottom: '0px'
+        },250).toggleClass("visible");
+    }
+    
+});
+
+$(document).on('change', '.islandSelect', function() {
+  var target = $(this).data('target');
+  var show = $("option:selected", this).data('show');
+  $(target).children().addClass('hide');
+  $(show).removeClass('hide');
+});
+$(document).ready(function(){
+	$('.islandSelect').trigger('change');
+});
