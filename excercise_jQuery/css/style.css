@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css?family=Anton|Berkshire+Swash|Fjalla+One');
+/* CSS Reset */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.clear:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.hide {
+  display: none;
+}
+
+.main {
+	border: 2px solid black;
+	width: 100%;
+	height: 100vh;
+	padding: 20px; 
+	text-align: center;
+}
+
+.left {
+	width: 30%;
+	height: 100%;
+	border-right: 2px solid black; 
+	float: left;
+	padding: 20px;
+}
+	.mainLogo {
+		
+
+	}
+.left > div > img {
+	margin-bottom: 20px;
+}
+
+h3 {
+	margin-bottom: 20px;
+	font-family: 'Anton', sans-serif;
+}
+
+h2 {
+	font-family: 'Berkshire Swash', cursive;
+}
+
+p {
+	margin-bottom: 10px;
+	font-family: 'Fjalla One', sans-serif;
+}
+
+.right {
+	width: 70%;
+	height: 100%;
+	/*border: 2px solid blue; */
+	float: right;
+	padding: 20px;
+}
+
+.imageCont {
+	width: 100%;
+	/*height: 60%;*/
+	/*border: 2px solid green; */
+	float: right;
+	padding: 20px;
+	text-align: center;
+}
+
+	.imageCont ul > li{
+		display: inline-block;
+	}
+	.imageCont ul > li img {
+		margin: 20px;
+		cursor: pointer;
+	}
+
+.nametag{
+	width: 100%;
+	height: 5vh;
+	border: 2px solid black;
+}
+
+.nameCont {
+	width: 100%;
+	height: 40%;
+	border: 2px solid gray; 
+	float: right;
+	padding: 20px;
+}
+
+.drag{
+	width: 18.5%;
+	height: 5vh;
+	border: 2px solid black;
+}
+
