@@ -1,0 +1,22 @@
+.nav{
+	background-color: black; 
+}
+
+#cont {
+	
+	padding: 20px;
+/*	width: 30.333333%;*/
+
+}
+
+/*.row .col.l4{
+	width: 29.333333%;
+}*/
+
+#display{
+	width: 72%;
+}
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}

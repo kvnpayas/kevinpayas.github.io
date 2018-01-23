@@ -1,0 +1,44 @@
+[
+    {
+        "name": "Marlboro",
+        "description": "Selected premium tobaccos. American blend in flip top box.",
+        "price": "10",
+        "img": "1.png",
+        "category": 1
+    },
+    {
+        "name": "Camels",
+        "description": "Smoking mixture consisting of 2 varieties of tobacco leaf. Strong and tart Oriental.",
+        "price": "20",
+        "img": "1.png",
+        "category": 1
+    },
+    {
+        "name": "Lucky Strike",
+        "description": "Each puff less acid-A light smoke of rich, ripe-bodied tobacco",
+        "price": 43,
+        "img": "1.png",
+        "category": 2
+    },
+    {
+        "name": "Winston",
+        "description": "Tastes good like a cigarette should ",
+        "price": 43,
+        "img": "1.png",
+        "category": 2
+    },
+    {
+        "name": "Philip",
+        "description": "Delivers full flavor as no paper pack can",
+        "price": 43,
+        "img": "1.png",
+        "category": 3
+    },
+    {
+        "name": "Philip Morris",
+        "description": "Delivers full flavor as no paper pack can",
+        "price": 43,
+        "img": "1.png",
+        "category": 3
+    }
+]
