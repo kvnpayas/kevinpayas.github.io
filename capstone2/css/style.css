@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:700');
+
+body {
+	background-color: #fff;
+	display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+main {
+    flex: 1 0 auto;
+  }
+
+.backgroundImage img {
+/*	width: 100%;
+	height: 100%;*/
+}
+
+#divnav {
+	position: absolute;
+	z-index:999999999;
+}
+
+#nav {
+	 background: rgba(255, 255, 255, 0) !important;
+	  -webkit-transition: background .5s ease-out !important;
+  -moz-transition: background .5s ease-out !important;
+  -o-transition: background .5s ease-out !important;
+  transition: background .5s ease-out !important;
+  padding-right: 20px; 
+}
+
+#nav:hover {
+	background: rgba(255, 255, 255, 1) !important;
+	
+}
+
+#navIcon {
+	width: 115px;
+}
+
+.font{
+	font-family: 'Ubuntu', sans-serif;
+}
+
+#stagered-test,
+#stagered-test2 {
+	opacity: 0;
+}
+
+.input-field textarea:focus + label,input:focus + label {
+   color: green !important;
+ }
+ /* label underline focus color */
+ .row .input-field textarea:focus,input:focus {
+   /*border-bottom: 1px solid green !important;*/
+   /*box-shadow: 0 1px 0 0 green !important*/
+ }
+
+ .modal {
+ 	width: 45% !important;
+ }
+
+ #logosize {
+ 	font-size: 4rem;
+ }
+ @media only screen and (max-width: 600px){
+ 	#logosize {
+ 		font-size: 2rem;
+	 }
+ }
+
+/*login and regiter form*/
+#cont
+{
+	width: 400px;
+}
+
+.tabs .indicator
+{
+	background-color: green !important;
+	height: 60px;
+
+}
+
+.tabs .active
+{
+	background-color: white !important;
+	color: green !important;
+}
+#tabsColor
+{
+	background-color: green;
+
+}
+
+.form-container
+{
+	padding: 40px;
+	padding-top: 10px;
+}
+
+.confirmation-tabs-btn
+{
+	position: absolute;
+}
+
+#rowCont {
+	margin-right: 0;
+	margin-left: 0;
+}
+/*#logo{
+	left: 4%;
+}*/
+
+/* mobile page */
+#rowPhone {
+	padding-top: 50px;
+}
+#videoback {
+	z-index: -100;
+	position: absolute;
+}
+.imgView {
+ 	height: 375px !important;
+ 	width: 191px !important;
+ }
+.itemCol {
+	margin-bottom: 5% !important; 
+}
+@media only screen and (max-width: 600px){
+ 	.itemCol {
+	margin-bottom: 15% !important; 
+	}
+ }
+
+ /* product view page*/
+
+ .productView {
+ 	/*margin-left: 22% !important;*/
+ }
+
+ #carouselProd {
+ 	height: 100vh;
+ }
+ #imgCarousel {
+ 	height: 393px !important;
+ 	width: 200px !important;
+ }
+ .carouselItem {
+ 	top: -14% !important;
+ }
+
+ .carousel .indicators {
+ 	bottom: 10% !important;
+ }
+ .indicators .indicator-item {
+ 	height: 15px !important;
+ 	width: 15px !important;
+ 	background-color: grey !important;
+ }
+
+ .carousel .indicators .indicator-item.active {
+ 	background-color: green !important;
+ }
+
+ #infoCont {
+ 	padding-top: 9%;
+ }
+ .listBullet > li {
+ 	list-style-type: disc !important;
+ }
+ #carouselProd2 {
+ 	height: 490px !important;
+ }
+ #imageBottom {
+ 	width: 207px !important;
+ 	height: 408px !important;
+ }
+ .carouselBottom {
+ 	 top: -150px !important;
+ }
+ #colBottom, #carouselProd2 > a {
+ 	padding-bottom: 20px !important;
+ }
+ #carouselProd2 .indicators {
+ 	bottom: -5% !important;
+ }
+
+ /* Admin Add/Edit/Delete Page */
+ .mainSection {
+ 	margin-top: 6% !important;
+ }
+
+ /* Wear Page */
+ .wearCont {
+ 	/*height: 100vh !important;*/
+ 	padding-top: 55px !important;
+
+ }
+ .tabs {
+ 	height: 55px !important;
+ }
+ .tabs .tab {
+ 	height: 55px !important;
+ }
+ .tabs .tab a.active {
+ 	background-color: #f5f5f5 !important;
+ }
+
+ .iconImg {
+ 	height: 47px !important;
+ 	width: 47px !important;
+ }
+
+ .wearImg {
+ 	height: 233px !important;
+ 	width: 166px !important;
+ }
+
+ /* Wear View Page */
+ .viewWearCont {
+ 	padding-top: 60px !important;
+ }
+ .imgViewWear {
+ 	height: 500px !important;
+ 	width: 355px !important;
+ }
+ @media only screen and (max-width: 600px){
+ 	.imgViewWear {
+	height: 233px !important;
+ 	width: 166px !important; 
+	}
+ }
+ .iconImgWear {
+ 	height: 233px !important;
+ 	width: 166px !important;
+ }
+
+ .carouselWear {
+ 	height: 390px !important;
+ }
+ .carouselWear > .indicators {
+ 	bottom: 0% !important;
+ }
+
+ .carousel .carousel-itemWear {
+ 	top: -50px !important;
+ }
