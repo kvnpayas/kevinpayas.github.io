@@ -7,7 +7,7 @@
       </div>
       <div class="col l4 offset-l2 s12">
         <h5 class="green-text">Links</h5>
-        <ul>
+        <ul class="">
           <li><a class="green-text text-lighten-1" href="#!">Link 1</a></li>
           <li><a class="green-text text-lighten-1" href="#!">Link 2</a></li>
           <li><a class="green-text text-lighten-1" href="#!">Link 3</a></li>
@@ -18,7 +18,7 @@
   </div>
   <div class="footer-copyright green">
     <div class="container">
-      © 2014 Copyright Text
+      © 2018 Copyright Text
       <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
     </div>
   </div>

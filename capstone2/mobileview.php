@@ -3,6 +3,7 @@
 	require 'connection.php';
 
 	$id = $_GET['index'];
+	$x = $_GET['id'];
 	?>
 	<?php 
 	$sql = "SELECT * FROM phone_tablet WHERE id = '$id'";
@@ -38,7 +39,7 @@
 				}else{
 			?>	
 				<div class="col l12 m12 s12 center viewWearCont">
-						<a href="#" class="btn green white-text"><i class="large material-icons left white-text">add_shopping_cart</i>GET YOURS</a>
+						<a href="add_to_cart.php?index=<?php echo $item['id'] ?>&&cat=<?php echo $item['category_id'] ?>&&id=<?php echo $x ?>" class="btn green white-text"><i class="large material-icons left white-text">add_shopping_cart</i>GET YOURS</a>
 					</div>
 			<?php } ?>
 				</div>

@@ -246,3 +246,9 @@ main {
  .carousel .carousel-itemWear {
  	top: -50px !important;
  }
+
+ /* Cart Page */
+ .cartCont {
+ 	height: 233px !important;
+ 	width: 115px !important;
+ }

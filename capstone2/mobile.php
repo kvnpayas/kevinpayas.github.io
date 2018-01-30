@@ -34,7 +34,7 @@
 		$result1 = mysqli_query($conn,$sql1);
 		while($image = mysqli_fetch_assoc($result1)) {
 		?>
-		<a href="mobileview.php?index=<?php echo $id ?>"><img src="<?php echo $image['image'] ?>" class="responsive-img imgView">
+		<a href="mobileview.php?index=<?php echo $item['id'] ?>&&cat=<?php echo $item['category_id'] ?>&&id=<?php echo $id ?>"><img src="<?php echo $image['image'] ?>" class="responsive-img imgView">
 
 		<?php } ?>
 		<?php
@@ -51,7 +51,7 @@
 					<div class="col l12 m12 s12 center viewWearCont">
 					<a href="add_to_cart.php?index=<?php echo $item['id'] ?>&&cat=<?php echo $item['category_id'] ?>&&id=<?php echo $id ?>" class="btn green white-text"><i class="large material-icons left white-text">add_shopping_cart</i>GET YOURS</a>
 					<p>
-					<div>
+					<div class="checkTest">
 		      				<input type="checkbox" id="check<?php echo $check ?>" class="checkbox" />
 		     				<label for="check<?php echo $check ?>">Check to Compare</label>
      				</div>

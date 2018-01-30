@@ -32,6 +32,8 @@ if(isset($_SESSION['username'])){
 					echo "<li class='divider'></li>
 						<li><a href='admin_item_page.php' class='green-text'>Edit/Add Items</a></li>
 						<li class='divider'></li>
+						<li><a href='admin_view_orders.php' class='green-text'>View Orders</a></li>
+						<li class='divider'></li>
 						<li><a href='logout.php' class='green-text'>Log Out</a></li>";
 				}else {
 			?>	
@@ -41,6 +43,8 @@ if(isset($_SESSION['username'])){
 				?>
 				<li class="divider"></li>
 				<li><a href="#!" class="green-text">Edit Profile</a></li>
+				<li class="divider"></li>
+				<li><a href="order_history.php" class="green-text">View order History</a></li>
 				<li class="divider"></li>
 				<li><a href="cart.php" class="green-text"><i class="large material-icons left green-text">add_shopping_cart</i>Cart</a></li>
 				<li class="divider"></li>

@@ -39,7 +39,7 @@
 	</ul>
 </div>
 
-<div class="section white">
+<div class="section white"  id="shop">
 	<div class="row container">
 
 		<div class="row">

@@ -68,6 +68,7 @@ $(document).ready(function(){
        // Callback for Modal close
    }
    );
+	$('#checkout').modal();
 
 	$('.dropdown-button').dropdown({
 		inDuration: 500,
@@ -153,10 +154,35 @@ $(document).ready(function(){
 		});
 	});
 
-	if ($("#check-form input:checkbox:checked").length > 1) {
+	if ($("#check-form .itemCol input:checkbox:checked").length > 1) {
 
-		$('#containerID').addClass('green');
+		alert("hello");
 	}
+
+	$("#delivery_add").val("Get Current Address or type another delivery address");
+
+// 	$(".addGet").click(function() {
+//     $.get("addGet.php", {param: $(this).attr('id')}, 
+//         function(data) {
+//             $('#delivery_add').val(data);
+//         });    
+//     return false;
+// });
+
+	$(".getAdd").click(function(){
+		var users = $(this).attr('id');
+		$.ajax({
+			method: "post",
+			url: 'addGet.php',
+			data: {
+				users : users
+			},
+			success: function(data){
+				// alert(data);
+				$("#delivery_add").val(data);
+			}
+		});
+	});
 
 });
 
