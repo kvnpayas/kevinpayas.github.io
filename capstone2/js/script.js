@@ -154,6 +154,40 @@ $(document).ready(function(){
 		});
 	});
 
+	function getAllorder(){
+
+		$.ajax
+		({
+			url: 'admin_orders_view.php',
+			data: 'category=all',
+			cache: false,
+			success: function(data)
+			{
+				$("#body_order").html(data);
+			}
+		});   
+	}
+
+	getAllorder();
+
+	$("#categoriesorder").change(function()
+	{    
+		var id = $(this).find(":selected").val();
+
+		var dataString = 'category='+ id;
+
+		$.ajax
+		({
+			url: 'admin_orders_view.php',
+			data: dataString,
+			cache: false,
+			success: function(data)
+			{
+				$("#body_order").html(data);
+			} 
+		});
+	});
+
 	if ($("#check-form .itemCol input:checkbox:checked").length > 1) {
 
 		alert("hello");
@@ -183,6 +217,22 @@ $(document).ready(function(){
 			}
 		});
 	});
+
+	// $('#autocomplete-input').keyup(function(){
+	// 	var name =$('#autocomplete-input').val();
+
+		
+
+	// 	$.post('name_suggestions.php', 
+	// 		{'suggestion': name},
+	// 		function(data, status){
+	// 			var sample = '{"Apple": null,"Microsoft": null,"Google": "https://placehold.it/250x250"}';
+	// 			console.log(sample)
+	// 			$('#autocomplete-input.autocomplete').autocomplete({
+ //          			data: eval(sample),
+ //       			 });
+	// 		});
+	// 	});
 
 });
 

@@ -42,7 +42,7 @@
 					?>
 					
 					<div class="col l12 m12 s12 center viewWearCont">
-						<a href="editproduct_wear.php?index=<?php echo $item['id'] ?>" class="btn blue white-text"><i class="large material-icons left white-text">edit</i>Edit</a>
+						<a href="editproduct.php?index=<?php echo $item['id'] ?>" class="btn blue white-text"><i class="large material-icons left white-text">edit</i>Edit</a>
 						<a href="#" class="btn red white-text"><i class="large material-icons left white-text">delete</i>Delete</a>
 					</div>
 			<?php		

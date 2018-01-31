@@ -24,7 +24,7 @@
 			while($item = mysqli_fetch_assoc($result)) { ?>
 				<div class="row grey lighten-4">
 					<h3 class="center z-depth-3 green lighten-1 white-text">Edit Items</h3>
-					<form class="col s12" action="update_item_endpoint.php?index=<?php echo $id ?>" method="POST">
+					<form class="col s12" action="update_item_endpoint.php?index=<?php echo $id ?>&&category=<?php echo  $item['category_id'] ?>" method="POST">
 						<div class="row">
 							<div class="input-field col l3 m12 s12">
 								<input  id="phone_name" type="text" class="validate" name="phone_name" value="<?php echo $item['name'] ?>">

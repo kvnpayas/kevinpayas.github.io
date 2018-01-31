@@ -6,7 +6,7 @@ if(isset($_SESSION['username'])){
 }
 ?>
 <div class="navbar-fixed" id="divnav">
-	<nav class="z-depth-0 " id="nav">
+	<nav class="z-depth-3 " id="nav">
 		<div class="nav-wrapper">
 			<a href="index.php" class="brand-logo green-text font" id="logo"><i class="large material-icons left green-text" id="logosize">android</i><span class="hide-on-small-only">andriodShop</span></a>
 			<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons green-text">menu</i></a>
@@ -63,7 +63,10 @@ if(isset($_SESSION['username'])){
 				<li><a href="#!" class="green-text"><i class="material-icons left green-text">tv</i>TV</a></li>
 
 			</ul>
-			<ul id="slide-out" class="side-nav">
+			
+		</div>
+	</nav>
+	<ul id="slide-out" class="side-nav">
 				<li><a href="index.php" class="green-text font" id="logo"><i class="small material-icons left green-text" >android</i><span>andriodShop</span></a>
 				</li>
 				<li class="divider"></li>
@@ -89,6 +92,4 @@ if(isset($_SESSION['username'])){
 				<li class="divider"></li>
 				<li><a href="#modal1" class="modal-trigger">Log In/Register</a></li>
 			</ul>
-		</div>
-	</nav>
 </div>
