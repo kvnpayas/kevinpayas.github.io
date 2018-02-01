@@ -16,6 +16,6 @@
 
 
 	}
-	header('location: cart.php');
+	header('location: cart.php?msg=success');
 
 ?>

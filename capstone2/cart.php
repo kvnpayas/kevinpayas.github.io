@@ -6,7 +6,12 @@
 	<div class="row center viewWearCont grey lighten-4">
 		<div class="col l12 m12 s12">
 			<h5 class="z-depth-3 green lighten-1 white-text">Cart</h5>
-			</div>
+			<?php 
+    		if (isset($_GET['msg'])){
+     		 	echo "<script>Materialize.toast('Remove Item Success', 3000);</script>"; 
+    		}
+  			?>
+		</div>
 		<?php 
 		if(isset($_SESSION['cart'])){
 		foreach($_SESSION['cart'] as $x => $index){
@@ -87,12 +92,12 @@
      	}
       }
       ?>
-      <form action="checkout_endpoint.php?total=<?php echo $allTotal; ?>" method="post">
+      <form action="checkout_endpoint.php?total=<?php echo $allTotal; ?> " method="post">
       <h5 class="center">Grand Total: <?php echo $allTotal; ?></h5>
       <div class="row">
 		<div class="input-field col l12 m12 s12">
-			<textarea id="delivery_add" class="materialize-textarea" name="delivery_add"></textarea>
-			<label for="delivery_add">Delviery Address</label>
+			<textarea id="delivery_add" class="materialize-textarea" name="delivery_add" placeholder="Get Current Address or type another delivery address" required="" aria-required="true"></textarea>
+			<label for="delivery_add active" >Delviery Address</label>
 		</div>
 		<div class="col l12 m12 s12">
 			<a href="#" class="getAdd btn" id="<?php echo $users ?>">Click here to get current address</a>

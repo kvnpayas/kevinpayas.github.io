@@ -1,7 +1,6 @@
 
 <?php function display_content(){ ?>
 
-
 <div class="slider">
 
 	<ul class="slides">

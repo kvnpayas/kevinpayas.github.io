@@ -4,255 +4,259 @@
 
 
 	if ($cat == 'all') { ?>
-		
-	<table>
-				<th>Customer Name</th>
-				<th>Item Name</th>
-				<th>Item Category</th>
-				<th>date Purchased</th>
-				<th>Price</th>
-				<?php 
-				// $user = $_SESSION['username'];
-				$sql1 = "SELECT * FROM users WHERE role = 'regular'";
+
+		<table class="white l12 m12 s12 responsive-table" >
+	        <thead>
+	          <tr>
+	              <th class="green">order No</th>
+	              <th class="green">Name</th>
+	              <th class="green">Product Name</th>
+	              <th class="green">Category Item</th>
+	              <th class="green">Item Price</th>
+	              <th class="green">Date Purchased</th>
+	          </tr>
+	        </thead>
+	        <tbody>
+	        <?php
+	        $sql = "SELECT * FROM purchase_order";
+	        $result =  mysqli_query($conn,$sql);
+			while($row = mysqli_fetch_assoc($result)){
+				$total_order = $row['total_price'];
+				$id = $row['id'];
+				$date = $row['date_purchased'];
+				$timestamp = date('F j, Y, g:i a',strtotime($date));
+
+				echo "<tr>";
+				echo "<td class='grey lighten-1'>$id</td>";
+				echo "<td class='grey lighten-1'></td>";
+				echo "<td class='grey lighten-1'></td>";
+				echo "<td class='grey lighten-1'></td>";
+				echo "<td class='grey lighten-1'></td>";
+				echo "<td class='grey lighten-1'>$timestamp</td>";
+				echo "</tr>";
+
+				$sql1 = "SELECT * FROM order_details WHERE purchase_id = '$id'";
 				$result1 = mysqli_query($conn,$sql1);
-				while($users = mysqli_fetch_assoc($result1)){
+				while($order = mysqli_fetch_assoc($result1)){
+					$price = $order['price'];
+					$user_id = $order['user_id'];
+					$cat = $order['category_id'];
+					$prod_id = $order['item_id'];
 
-				$id = $users['id'];
-				$first_name = ucfirst($users['first_name']);
-				$last_name = ucfirst($users['last_name']);
+					$sql2 = "SELECT * FROM users WHERE id = '$user_id'";
+					$result2 = mysqli_query($conn,$sql2);
+					while($cust = mysqli_fetch_assoc($result2)){
+						$cust_firstName = ucfirst($cust['first_name']);
+						$cust_lastName = ucfirst($cust['last_name']);
 
-				$sql3 = "SELECT * FROM purchase_order WHERE user_id = '$id'";
-				$result3 = mysqli_query($conn,$sql3);
-				while($item3 = mysqli_fetch_assoc($result3)) {
-					$pur_id = $item3['id'];
-					$total_price = $item3['total_price'];
-					echo "<tr>
-                            <td>$pur_id</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    ";
-				$sql = "SELECT * FROM order_details WHERE user_id = '$id' AND purchase_id = '$pur_id'";
-				$result = mysqli_query($conn,$sql);
-				while($item = mysqli_fetch_assoc($result)) {
+						$sql3 = "SELECT * FROM category WHERE id = '$cat'";
+						$result3 = mysqli_query($conn,$sql3);
+						while($category = mysqli_fetch_assoc($result3)){
+							$cat_name = strtoupper($category['category_name']);
 
-					$items = $item['item_id'];
-					$date = $item['purchase_date'];
-					$timestamp = date('F j, Y, g:i a',strtotime($date));
 
-					// echo $item['category_id'];
-					if ($item['category_id'] == 1) {
-						$sql2 = "SELECT phone_tablet.name,phone_tablet.price,category.category_name FROM phone_tablet JOIN category ON(category.id = phone_tablet.category_id) WHERE phone_tablet.id = '$items'";
-						$result2 = mysqli_query($conn,$sql2);
-						$row = mysqli_fetch_assoc($result2);
-						$name = $row['name'];
-						$category = strtoupper($row['category_name']);
-						$price = $row['price'];
-						echo "<tr>";
-						echo "<td>$first_name $last_name</td>";
-						echo "<td>$name</td>";
-						echo "<td>$category</td>";
-						echo "<td>$timestamp</td>";
-						echo "<td>Php: $price</td>";
-						echo "</tr>";
-					}else if($item['category_id'] == 3) {
-						$sql2 = "SELECT wears.name,wears.price,category.category_name FROM wears JOIN category ON(category.id = wears.category_id) WHERE wears.id = '$items'";
-						$result2 = mysqli_query($conn,$sql2);
-						$row = mysqli_fetch_assoc($result2);
-						$name = $row['name'];
-						$category = strtoupper($row['category_name']);
-						$price = $row['price'];
-						echo "<tr>";
-						echo "<td>$first_name $last_name</td>";
-						echo "<td>$name</td>";
-						echo "<td>$category</td>";
-						echo "<td>$timestamp</td>";
-						echo "<td>Php: $price</td>";
-						echo "</tr>";
+							if($cat == 1){
+								$sql4 = "SELECT * FROM phone_tablet WHERE id = '$prod_id'";
+								$result4 = mysqli_query($conn,$sql4);
+								while($prod = mysqli_fetch_assoc($result4)){
+									$item_name = $prod['name'];
+
+									echo "<tr>";
+									echo "<td></td>";
+									echo "<td>$cust_firstName"." "."$cust_lastName</td>";
+									echo "<td>$item_name</td>";
+									echo "<td>$cat_name</td>";
+									echo "<td>Php: $price</td>";
+									echo "</tr>";
+
+								}
+							}else if($cat == 3){
+								$sql4 = "SELECT * FROM wears WHERE id = '$prod_id'";
+								$result4 = mysqli_query($conn,$sql4);
+								while($prod = mysqli_fetch_assoc($result4)){
+									$item_name = $prod['name'];
+
+									echo "<tr>";
+									echo "<td></td>";
+									echo "<td>$cust_firstName"." "."$cust_lastName</td>";
+									echo "<td>$item_name</td>";
+									echo "<td>$cat_name</td>";
+									echo "<td>Php: $price</td>";
+									echo "</tr>";
+								}
+							}	
+						}
 					}
-					}
-
-					echo "<tr>
-                            <td>Total: Php $total_price</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    ";
 				}
+				echo "<tr>";
+				echo "<td></td>";
+				echo "<td></td>";
+				echo "<td></td>";
+				echo "<td></td>";
+				echo "<td>Total: Php $total_order</td>";
+				echo "</tr>";
 			}
-				?>
-			</table>
-	<?php }else if($cat == 1) { ?> 
 
-			<table>
-				<th>Customer Name</th>
-				<th>Item Name</th>
-				<th>Item Category</th>
-				<th>date Purchased</th>
-				<th>Price</th>
+	        ?>
 
-				<?php 
-				// $user = $_SESSION['username'];
-				$sql1 = "SELECT * FROM users WHERE role = 'regular'";
+	        
+	        </tbody>
+      </table> 
+	<?php }else if ($cat == 1) { ?>
+
+		<table class="white" >
+	        <thead>
+	          <tr>
+	              <th class="green">order No</th>
+	              <th class="green">Name</th>
+	              <th class="green">Product Name</th>
+	              <th class="green">Category Item</th>
+	              <th class="green">Item Price</th>
+	              <th class="green">Date Purchased</th>
+	          </tr>
+	        </thead>
+	        <tbody>
+	        <?php 
+	        $sql = "SELECT DISTINCT purchase_order.id, purchase_order.date_purchased FROM purchase_order LEFT JOIN order_details ON(purchase_order.id = order_details.purchase_id) WHERE order_details.category_id = 1 AND purchase_order.id = order_details.purchase_id";
+	        $result = mysqli_query($conn,$sql);
+	        while($pur = mysqli_fetch_assoc($result)){
+	        	$id = $pur['id'];
+	        	$date = $pur['date_purchased'];
+				$timestamp = date('F j, Y, g:i a',strtotime($date));
+
+	        	echo "<tr>";
+				echo "<td class='grey lighten-1'>$id</td>";
+				echo "<td class='grey lighten-1'></td>";
+				echo "<td class='grey lighten-1'></td>";
+				echo "<td class='grey lighten-1'></td>";
+				echo "<td class='grey lighten-1'></td>";
+				echo "<td class='grey lighten-1'>$timestamp</td>";
+				echo "</tr>";
+
+				$sql1 = "SELECT * FROM order_details WHERE purchase_id = '$id' AND category_id = 1";
 				$result1 = mysqli_query($conn,$sql1);
-				while($users = mysqli_fetch_assoc($result1)){
+	        	while($order = mysqli_fetch_assoc($result1)){
+	        		$price = $order['price'];
+	        		$category = $order['category_id'];
+	        		$user_id = $order['user_id'];
+	        		$item_id = $order['item_id'];
 
-				$id = $users['id'];
-				$first_name = ucfirst($users['first_name']);
-				$last_name = ucfirst($users['last_name']);
+	        		$sql2 = "SELECT * FROM category WHERE id = '$category'";
+	        		$result2 = mysqli_query($conn,$sql2);
+	        		while($item_cat = mysqli_fetch_assoc($result2)){
+	        			$cat_name = strtoupper($item_cat['category_name']);
 
-				$sql3 = "SELECT purchase_order.id,purchase_order.total_price FROM purchase_order JOIN order_details ON(purchase_order.id = order_details.purchase_id) WHERE purchase_order.user_id = '$id' AND order_details.category_id = 1";
-				$result3 = mysqli_query($conn,$sql3);
-				while($item3 = mysqli_fetch_assoc($result3)) {
-					$pur_id = $item3['id'];
-					$total_price = $item3['total_price'];
-					echo "<tr>
-                            <td>$pur_id</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    ";
-				$sql = "SELECT * FROM order_details WHERE user_id = '$id' AND purchase_id = '$pur_id' AND category_id = '$cat'";
-				$result = mysqli_query($conn,$sql);
-				while($item = mysqli_fetch_assoc($result)) {
+	        			$sql3 = "SELECT * FROM users WHERE id = '$user_id'";
+	        			$result3 = mysqli_query($conn,$sql3);
+		        		while($user = mysqli_fetch_assoc($result3)){
+		        			$first_name = ucfirst($user['first_name']);
+		        			$last_name = ucfirst($user['last_name']);
 
-					$items = $item['item_id'];
-					$date = $item['purchase_date'];
-					// echo $item['category_id'];
-					if ($item['category_id'] == 1) {
-						$sql2 = "SELECT phone_tablet.name,phone_tablet.price,category.category_name FROM phone_tablet JOIN category ON(category.id = phone_tablet.category_id) WHERE phone_tablet.id = '$items'";
-						$result2 = mysqli_query($conn,$sql2);
-						$row = mysqli_fetch_assoc($result2);
-						$name = $row['name'];
-						$category = strtoupper($row['category_name']);
-						$price = $row['price'];
-						echo "<tr>";
-						echo "<td>$first_name $last_name</td>";
-						echo "<td>$name</td>";
-						echo "<td>$category</td>";
-						echo "<td>$date</td>";
-						echo "<td>Php: $price</td>";
-						echo "</tr>";
-					}else if($item['category_id'] == 3) {
-						$sql2 = "SELECT wears.name,wears.price,category.category_name FROM wears JOIN category ON(category.id = wears.category_id) WHERE wears.id = '$items'";
-						$result2 = mysqli_query($conn,$sql2);
-						$row = mysqli_fetch_assoc($result2);
-						$name = $row['name'];
-						$category = strtoupper($row['category_name']);
-						$price = $row['price'];
-						echo "<tr>";
-						echo "<td>$first_name $last_name</td>";
-						echo "<td>$name</td>";
-						echo "<td>$category</td>";
-						echo "<td>$date</td>";
-						echo "<td>Php: $price</td>";
-						echo "</tr>";
+		        			$sql4 = "SELECT * FROM phone_tablet WHERE id = '$item_id'";
+		        			$result4 = mysqli_query($conn,$sql4);
+			        		while($item = mysqli_fetch_assoc($result4)){
+			        			$product_name = $item['name'];
+
+				        		echo "<tr>";
+								echo "<td></td>";
+								echo "<td>$first_name"." "."$last_name</td>";
+								echo "<td>$product_name</td>";
+								echo "<td>$cat_name</td>";
+								echo "<td>$price</td>";
+								echo "<td></td>";
+								echo "</tr>";
+							}
+						}
 					}
-					}
-
-					echo "<tr>
-                            <td>Total: Php $total_price</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    ";
-				}
-			}
-				?>
-			</table>
+		        }
+	        }
 
 
-	<?php }else if($cat == 3) { ?> 
+	        ?>
 
-			<table>
-				<th>Customer Name</th>
-				<th>Item Name</th>
-				<th>Item Category</th>
-				<th>date Purchased</th>
-				<th>Price</th>
+	        
+	        </tbody>
+      </table> 
+	<?php }else if ($cat == '3') { ?>
 
-				<?php 
-				// $user = $_SESSION['username'];
-				$sql1 = "SELECT * FROM users WHERE role = 'regular'";
+		<table class="white" >
+	        <thead>
+	          <tr>
+	              <th class="green">order No</th>
+	              <th class="green">Name</th>
+	              <th class="green">Product Name</th>
+	              <th class="green">Category Item</th>
+	              <th class="green">Item Price</th>
+	              <th class="green">Date Purchased</th>
+	          </tr>
+	        </thead>
+	        <tbody>
+	        <?php
+	        $sql = "SELECT DISTINCT * FROM purchase_order";
+	        $result =  mysqli_query($conn,$sql);
+			while($row = mysqli_fetch_assoc($result)){
+				$total_order = $row['total_price'];
+				$id = $row['id'];
+				$date = $row['date_purchased'];
+				$timestamp = date('F j, Y, g:i a',strtotime($date));
+
+				echo "<tr>";
+				echo "<td class='grey lighten-1'>$id</td>";
+				echo "<td class='grey lighten-1'></td>";
+				echo "<td class='grey lighten-1'></td>";
+				echo "<td class='grey lighten-1'></td>";
+				echo "<td class='grey lighten-1'></td>";
+				echo "<td class='grey lighten-1'>$timestamp</td>";
+				echo "</tr>";
+
+				$sql1 = "SELECT * FROM order_details WHERE purchase_id = '$id' AND category_id = 3";
 				$result1 = mysqli_query($conn,$sql1);
-				while($users = mysqli_fetch_assoc($result1)){
+				while($order = mysqli_fetch_assoc($result1)){
+					$price = $order['price'];
+					$user_id = $order['user_id'];
+					$cat = $order['category_id'];
+					$prod_id = $order['item_id'];
 
-				$id = $users['id'];
-				$first_name = ucfirst($users['first_name']);
-				$last_name = ucfirst($users['last_name']);
+					$sql2 = "SELECT * FROM users WHERE id = '$user_id'";
+					$result2 = mysqli_query($conn,$sql2);
+					while($cust = mysqli_fetch_assoc($result2)){
+						$cust_firstName = ucfirst($cust['first_name']);
+						$cust_lastName = ucfirst($cust['last_name']);
 
-				$sql3 = "SELECT purchase_order.id,purchase_order.total_price FROM purchase_order JOIN order_details ON(purchase_order.id = order_details.purchase_id) WHERE purchase_order.user_id = '$id' AND order_details.category_id = 3";
-				$result3 = mysqli_query($conn,$sql3);
-				while($item3 = mysqli_fetch_assoc($result3)) {
-					$pur_id = $item3['id'];
-					$total_price = $item3['total_price'];
-					echo "<tr>
-                            <td>$pur_id</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    ";
-				$sql = "SELECT * FROM order_details WHERE user_id = '$id' AND purchase_id = '$pur_id' AND category_id = '$cat'";
-				$result = mysqli_query($conn,$sql);
-				while($item = mysqli_fetch_assoc($result)) {
+						$sql3 = "SELECT * FROM category WHERE id = '$cat'";
+						$result3 = mysqli_query($conn,$sql3);
+						while($category = mysqli_fetch_assoc($result3)){
+							$cat_name = strtoupper($category['category_name']);
+							$sql4 = "SELECT * FROM wears WHERE id = '$prod_id'";
+							$result4 = mysqli_query($conn,$sql4);
+							while($prod = mysqli_fetch_assoc($result4)){
+								$item_name = $prod['name'];
 
-					$items = $item['item_id'];
-					$date = $item['purchase_date'];
-					// echo $item['category_id'];
-					if ($item['category_id'] == 1) {
-						$sql2 = "SELECT phone_tablet.name,phone_tablet.price,category.category_name FROM phone_tablet JOIN category ON(category.id = phone_tablet.category_id) WHERE phone_tablet.id = '$items'";
-						$result2 = mysqli_query($conn,$sql2);
-						$row = mysqli_fetch_assoc($result2);
-						$name = $row['name'];
-						$category = strtoupper($row['category_name']);
-						$price = $row['price'];
-						echo "<tr>";
-						echo "<td>$first_name $last_name</td>";
-						echo "<td>$name</td>";
-						echo "<td>$category</td>";
-						echo "<td>$date</td>";
-						echo "<td>Php: $price</td>";
-						echo "</tr>";
-					}else if($item['category_id'] == 3) {
-						$sql2 = "SELECT wears.name,wears.price,category.category_name FROM wears JOIN category ON(category.id = wears.category_id) WHERE wears.id = '$items'";
-						$result2 = mysqli_query($conn,$sql2);
-						$row = mysqli_fetch_assoc($result2);
-						$name = $row['name'];
-						$category = strtoupper($row['category_name']);
-						$price = $row['price'];
-						echo "<tr>";
-						echo "<td>$first_name $last_name</td>";
-						echo "<td>$name</td>";
-						echo "<td>$category</td>";
-						echo "<td>$date</td>";
-						echo "<td>Php: $price</td>";
-						echo "</tr>";
+								echo "<tr>";
+								echo "<td></td>";
+								echo "<td>$cust_firstName"." "."$cust_lastName</td>";
+								echo "<td>$item_name</td>";
+								echo "<td>$cat_name</td>";
+								echo "<td>Php: $price</td>";
+								echo "</tr>";
+							}	
+						}
 					}
-					}
-
-					echo "<tr>
-                            <td>Total: Php $total_price</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    ";
 				}
+				echo "<tr>";
+				echo "<td></td>";
+				echo "<td></td>";
+				echo "<td></td>";
+				echo "<td></td>";
+				echo "<td>Total: Php $total_order</td>";
+				echo "</tr>";
 			}
-				?>
-			</table>
 
+	        ?>
 
-	<?php } 
+	        
+	        </tbody>
+      </table> 
+	<?php }
+	
 ?>

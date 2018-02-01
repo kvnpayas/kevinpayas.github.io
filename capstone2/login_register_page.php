@@ -1,5 +1,4 @@
 
-
 <!-- Modal Structure -->
 <div id="modal1" class="modal">
   <div class="modal-content">
@@ -54,6 +53,14 @@
             <input id="password" type="password" class="validate" name="password">
             <label for="password">Password</label>
           </div>
+          <?php 
+            if(isset($_GET['modal'])){
+              echo "<span class='red-text'>Wrong Username or Password</span>";
+            }
+            if(isset($_GET['ban'])){
+              echo "<span class='red-text'>BAN KN BOBO</span>";
+            }
+          ?>
         </div>
         <br>
         <center>

@@ -356,8 +356,23 @@
 
 							</div>
 						</div>
-						<div id="delete" class="col s12 ">Delete Items
+						<div id="delete" class="col s12 ">
+							<div class="row">
+							<div class="input-field col l3">
+								<select id="categories">
+									<option value="select" selected disabled="">Select Category</option>
+									<?php
+									$sql = "SELECT * FROM category";
+									$result = mysqli_query($conn, $sql);
+									while($rows = mysqli_fetch_assoc($result)) {
+										?>
+										<option value="<?php echo $rows['id'] ?>"><?php echo $rows['category_name'] ?></option>
+										<?php } ?>
+									</select>
 
+									<label>Choose Products</label>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

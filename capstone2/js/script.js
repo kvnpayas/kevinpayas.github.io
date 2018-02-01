@@ -4,6 +4,7 @@ $(document).ready(function(){
 	$('.slider').slider({height: 600});
 	// $('.button-collapse').sideNav();
 	$('.collapsible').collapsible();
+	$('.collapsibleUser').collapsible();
 	$('select').material_select();
 	$('.materialize-textarea').trigger('autoresize');
 	$('.button-collapse').sideNav({
@@ -193,7 +194,7 @@ $(document).ready(function(){
 		alert("hello");
 	}
 
-	$("#delivery_add").val("Get Current Address or type another delivery address");
+	// $("#delivery_add").val("Get Current Address or type another delivery address");
 
 // 	$(".addGet").click(function() {
 //     $.get("addGet.php", {param: $(this).attr('id')}, 
@@ -205,6 +206,7 @@ $(document).ready(function(){
 
 	$(".getAdd").click(function(){
 		var users = $(this).attr('id');
+		console.log(users);
 		$.ajax({
 			method: "post",
 			url: 'addGet.php',
@@ -218,21 +220,41 @@ $(document).ready(function(){
 		});
 	});
 
-	// $('#autocomplete-input').keyup(function(){
-	// 	var name =$('#autocomplete-input').val();
-
-		
-
-	// 	$.post('name_suggestions.php', 
-	// 		{'suggestion': name},
-	// 		function(data, status){
-	// 			var sample = '{"Apple": null,"Microsoft": null,"Google": "https://placehold.it/250x250"}';
-	// 			console.log(sample)
-	// 			$('#autocomplete-input.autocomplete').autocomplete({
- //          			data: eval(sample),
- //       			 });
-	// 		});
+	// $(".clickSearch").click(function(){
+	// 	var users = $(this).attr('id');
+	// 	alert("asdad");
+	// 	$.ajax({
+	// 		method: "post",
+	// 		url: 'search_by_name.php',
+	// 		data: {
+	// 			users : users
+	// 		},
+	// 		success: function(data){
+	// 			alert(data);
+	// 			$("#searchBody").html(data);
+	// 		}
 	// 	});
+	// });
+
+	$('#autocomplete-input').keyup(function(){
+		var name =$('#autocomplete-input').val();
+
+		$.post('name_suggestions.php', 
+			{'suggestion': name},
+			function(data, status){
+				$('#nameAppear').html(data);
+			});
+		});
+
+	$('#viewCustomer').keyup(function(){
+		var name =$('#viewCustomer').val();
+
+		$.post('name_suggestion_view.php', 
+			{'suggestions': name},
+			function(data, status){
+				$('#viewCustAppear').html(data);
+			});
+		});
 
 });
 

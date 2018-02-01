@@ -13,8 +13,8 @@ while($row = mysqli_fetch_assoc($result)){
 	$arrayName[][$user_name]  = $firstname.' '.$lastname;
 }
 	// print_r($arrayName);
-if (isset($_POST['suggestion'])) {
-	$nameInput = strtolower($_POST['suggestion']);
+if (isset($_POST['suggestions'])) {
+	$nameInput = strtolower($_POST['suggestions']);
 
 	if (!empty($nameInput)) {
 		foreach ($arrayName as $x) {
@@ -23,7 +23,7 @@ if (isset($_POST['suggestion'])) {
 
 				if (strpos($name, $nameInput) !== false) {
 
-					echo "<li><a href='admin_view_orders.php?id=$userName#searchName' class='collection-item'>".ucwords($name) . "</a></li>";
+					echo "<li><a href='admin_view_customer.php?id=$userName#searchName' class='collection-item'>".ucwords($name) . "</a></li>";
 				}
 			}
 		}

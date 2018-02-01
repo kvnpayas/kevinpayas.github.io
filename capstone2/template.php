@@ -35,6 +35,27 @@
 	<?php require('partials/nav.php') ?>
 	<?php require('login_register_page.php') ?>
 	<main>
+	<?php 
+    if(isset($_GET['modal'])){
+    echo "<script>
+    $(document).ready(function(){
+      $('#modal1').modal('open');
+
+      });
+      </script>"; 
+    }
+  ?>
+  	<?php 
+    if(isset($_GET['ban'])){
+    echo "<script>
+    $(document).ready(function(){
+      $('#modal1').modal('open');
+
+      });
+      </script>"; 
+    }
+  ?>
+
 		<?php display_content(); ?>
 	</main>
 	<?php require('partials/footer.php') ?>

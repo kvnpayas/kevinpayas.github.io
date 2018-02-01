@@ -66,12 +66,13 @@
 	<p><div class="col l4 m6 s12 itemCol hoverable">
 		<?php 
 		$id = $item['id'];
+		$cat_wear = $item['category_id'];
 		$sql1 = "SELECT * FROM product_image WHERE product_id = '$id' AND icon_image = 1 AND category_id = 3"; 
 
 		$result1 = mysqli_query($conn,$sql1);
 		while($image = mysqli_fetch_assoc($result1)) {
 		?>
-		<a href="wearview.php?index=<?php echo $id ?>"><img src="<?php echo $image['image'] ?>" class="responsive-img wearImg">
+		<a href="wearview.php?index=<?php echo $id ?>&&id=<?php echo $x ?>"><img src="<?php echo $image['image'] ?>" class="responsive-img wearImg">
 
 		<?php } ?>
 		<h5 class="green-text"><?php echo $item['name'] ?></h5></a>
@@ -88,7 +89,7 @@
 				} else {
 			?>	
 					<div class="col l12 m12 s12 center viewWearCont">
-						<a href="add_to_cart.php?index=<?php echo $item['id'] ?>&&cat=<?php echo $item['category_id'] ?>&&id=<?php echo $x ?>" class="btn green white-text"><i class="large material-icons left white-text">add_shopping_cart</i>GET YOURS</a>
+						<a href="add_to_cart.php?index=<?php echo $item['id'] ?>&&cat=<?php echo $cat_wear ?>&&id=<?php echo $x ?>" class="btn green white-text"><i class="large material-icons left white-text">add_shopping_cart</i>GET YOURS</a>
 					</div>
 			<?php } ?>
 	</div></p>

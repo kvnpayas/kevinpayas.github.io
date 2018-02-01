@@ -11,12 +11,16 @@ $result = mysqli_query($conn,$sql);
 
 if(mysqli_num_rows($result)>0){
 		$row = mysqli_fetch_assoc($result);
-		$_SESSION['username'] = $username;
-		$_SESSION['role'] = $row['role'];
-		header('location: index.php');
+		$status = $row['status'];
+		if($status == 'active'){
+			$_SESSION['username'] = $username;
+			$_SESSION['role'] = $row['role'];
+			header('location: index.php');
+		}else{
+			header('location: index.php?ban=true');
+		}
 	} else {
-		echo "failed to login. incorrect login credentials.";
-		echo " please login again <a href='login.php'>here</a>";	
+		header('location: index.php?modal=true');
 	}
 
 ?>

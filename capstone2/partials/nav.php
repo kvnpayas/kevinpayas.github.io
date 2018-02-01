@@ -34,40 +34,82 @@ if(isset($_SESSION['username'])){
 						<li class='divider'></li>
 						<li><a href='admin_view_orders.php' class='green-text'>View Orders</a></li>
 						<li class='divider'></li>
+						<li><a href='admin_view_customer.php' class='green-text'>View Customers</a></li>
+						<li class='divider'></li>
 						<li><a href='logout.php' class='green-text'>Log Out</a></li>";
 				}else {
-			?>	
-			<ul id='dropdown_profile' class='dropdown-content'>
-				<?php
-				echo isset($_SESSION['username']) ? '<li><span class="black-text">Welcome '.$user.'</span></li>' : '' ;
-				?>
-				<li class="divider"></li>
-				<li><a href="#!" class="green-text">Edit Profile</a></li>
-				<li class="divider"></li>
-				<li><a href="order_history.php" class="green-text">View order History</a></li>
-				<li class="divider"></li>
-				<li><a href="cart.php" class="green-text"><i class="large material-icons left green-text">add_shopping_cart</i>Cart</a></li>
-				<li class="divider"></li>
-				<li><a href="logout.php" class="green-text">Log Out</a></li>
-				
+				?>	
+				<ul id='dropdown_profile' class='dropdown-content'>
+					<?php
+					echo isset($_SESSION['username']) ? '<li><span class="black-text">Welcome '.$user.'</span></li>' : '' ;
+					?>
+					<li class="divider"></li>
+					<li><a href="#!" class="green-text">Edit Profile</a></li>
+					<li class="divider"></li>
+					<li><a href="order_history.php" class="green-text">View order History</a></li>
+					<li class="divider"></li>
+					<li><a href="cart.php" class="green-text"><i class="large material-icons left green-text">add_shopping_cart</i>Cart</a></li>
+					<li class="divider"></li>
+					<li><a href="logout.php" class="green-text">Log Out</a></li>
+				</ul>
+				<?php } ?>
+				<ul id='dropdown1' class='dropdown-content'>
+					<li><a href="mobile.php" class="green-text"><i class="material-icons left green-text">phone_android</i>Mobile</a></li>
+					<li class="divider"></li>
+					<li><a href="#!" class="green-text"><i class="material-icons left green-text">tablet_android</i>Tablet</a></li>
+					<li class="divider"></li>
+					<li><a href="wear.php" class="green-text"><i class="material-icons left green-text">watch</i>Wear</a></li>
+					<li class="divider"></li>
+					<li><a href="#!" class="green-text"><i class="material-icons left green-text">tv</i>TV</a></li>
 
-			</ul>
-			<?php } ?>
-			<ul id='dropdown1' class='dropdown-content'>
-				<li><a href="mobile.php" class="green-text"><i class="material-icons left green-text">phone_android</i>Mobile</a></li>
-				<li class="divider"></li>
-				<li><a href="#!" class="green-text"><i class="material-icons left green-text">tablet_android</i>Tablet</a></li>
-				<li class="divider"></li>
-				<li><a href="wear.php" class="green-text"><i class="material-icons left green-text">watch</i>Wear</a></li>
-				<li class="divider"></li>
-				<li><a href="#!" class="green-text"><i class="material-icons left green-text">tv</i>TV</a></li>
-
-			</ul>
+				</ul>
 			
-		</div>
+			</div>
 	</nav>
 	<ul id="slide-out" class="side-nav">
 				<li><a href="index.php" class="green-text font" id="logo"><i class="small material-icons left green-text" >android</i><span>andriodShop</span></a>
+				<li class="divider"></li>
+				</li>
+				<?php if(isset($_SESSION['username'])){
+
+				}else {
+					echo '<li><a href="#modal1" class="green-text font modal-trigger">Log in/Register</a></li>';
+				} ?>
+				<li class="no-padding">
+					<ul class="collapsible collapsible-accordion" id="collapsibleUser">
+						<li>
+							<?php if(isset($_SESSION['username'])){
+							echo "<a class='green-text collapsible-header'>Welcome ".$user."<i class='material-icons'>arrow_drop_down</i></a>
+								";
+							} ?>
+							<div class="collapsible-body">
+								<ul>
+									<?php
+									if(isset($_SESSION['role']) && $_SESSION['role']=='admin'){
+										echo "<li class='divider'></li>
+											<li><a href='admin_item_page.php' class='green-text'>Edit/Add Items</a></li>
+											<li class='divider'></li>
+											<li><a href='admin_view_orders.php' class='green-text'>View Orders</a></li>
+											<li class='divider'></li>
+											<li><a href='admin_view_customer.php' class='green-text'>View Customers</a></li>
+											<li class='divider'></li>
+											<li><a href='logout.php' class='green-text'>Log Out</a></li>";
+									}else {
+									?>	
+			
+										<li class="divider"></li>
+										<li><a href="#!" class="green-text">Edit Profile</a></li>
+										<li class="divider"></li>
+										<li><a href="order_history.php" class="green-text">View order History</a></li>
+										<li class="divider"></li>
+										<li><a href="cart.php" class="green-text"><i class="material-icons left green-text">add_shopping_cart</i>Cart</a></li>
+										<li class="divider"></li>
+										<li><a href="logout.php" class="green-text">Log Out</a></li>
+									<?php } ?>
+								</ul>
+							</div>	
+						</li>	
+					</ul>
 				</li>
 				<li class="divider"></li>
 				<li class="no-padding">
@@ -78,7 +120,7 @@ if(isset($_SESSION['username'])){
 								<ul>
 									<li><a href="mobile.php" class="green-text"><i class="material-icons left green-text">phone_android</i>Mobile</a></li>
 									<li><a href="#!" class="green-text"><i class="material-icons left green-text">tablet_android</i>Tablet</a></li>
-									<li><a href="#!" class="green-text"><i class="material-icons left green-text">watch</i>Wear</a></li>
+									<li><a href="wear.php" class="green-text"><i class="material-icons left green-text">watch</i>Wear</a></li>
 									<li><a href="#!" class="green-text"><i class="material-icons left green-text">tv</i>TV</a></li>
 								</ul>
 							</div>
@@ -88,8 +130,7 @@ if(isset($_SESSION['username'])){
 				<li class="divider"></li>
 				<li><a href="#!">About Us</a></li>
 				<li class="divider"></li>
-				<li><a href="#contactUs">Contact Us</a></li>
+				<li><a href="index.php#contactUs">Contact Us</a></li>
 				<li class="divider"></li>
-				<li><a href="#modal1" class="modal-trigger">Log In/Register</a></li>
 			</ul>
 </div>

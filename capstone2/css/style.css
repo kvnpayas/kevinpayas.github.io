@@ -219,7 +219,7 @@ main {
 
  /* Wear View Page */
  .viewWearCont {
- 	padding-top: 60px !important;
+ 	padding-top: 90px !important;
  }
  .imgViewWear {
  	height: 500px !important;
@@ -252,3 +252,23 @@ main {
  	height: 233px !important;
  	width: 115px !important;
  }
+
+ /* Admin View Orders */
+ .nameList {
+ 	position: fixed !important;
+    width: 292px !important;
+    top: 23% !important;
+ }
+ #nameAppear {
+ 	position: absolute !important;
+ 	/*width: 20% !important;*/
+ }
+ #viewCustAppear {
+ 	position: absolute !important;
+ }
+
+ /* Admin View Customers */
+ .tableLeft {
+ 	text-align: center !important;
+ }
+
