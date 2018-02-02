@@ -121,6 +121,25 @@ $(document).ready(function(){
 					}
 		}
 	});
+	$('#updatePass').addClass('disabled');
+	$('#edit__confirm_password, #edit_password').on('keyup', function() {
+		if(allFilled1() && $('#edit__confirm_password').val() == $('#edit_password').val()){ 
+			
+
+					$('#updatePass').removeClass('disabled');
+					$('#edit__confirm_password').addClass('valid').removeClass('invalid');
+					$('#edit_password').addClass('valid').removeClass('invalid');
+
+					
+		}else{
+			$('#updatePass').addClass('disabled');
+			if($('#edit_password').val() == '' && $('#edit__confirm_password').val() == ''){
+			}else{
+					$('#edit__confirm_password').addClass('invalid').removeClass('valid');
+					$('#edit_password').addClass('invalid').removeClass('valid');
+					}
+		}
+	});
 	function getAll(){
 
 		$.ajax
@@ -261,6 +280,15 @@ $(document).ready(function(){
 function allFilled() {
 	var filled = true;
 	$('#reg-form input').each(function() {
+		if($(this).val() == '') filled = false;
+	});
+	return filled;
+
+
+}
+function allFilled1() {
+	var filled = true;
+	$('#passEdit input').each(function() {
 		if($(this).val() == '') filled = false;
 	});
 	return filled;

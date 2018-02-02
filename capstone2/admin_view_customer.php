@@ -56,16 +56,22 @@
 				    	echo "<tr>
 				    			<td>$first_name".' ' ."$last_name</td>
 				    			<td>$email</td>
-				    			<td>$status</td>
-				    			<td><form class='center grey lighten-4' method='post' action='customer_account.php?id=$id'>
-				    				<input name='account' type='radio' id='ok' value='active' checked/>
-				    				<label for='ok'>Active Account</label>
+				    			";
+				    	if($status == 'Active'){
+			    			echo "<td><p class='green-text'>$status</p></td>";
+			    		}else if($status == 'Ban'){
+			    			echo "<td><p class='red-text'>$status</p></td>";
+			    		}
 
-				    				<input name='account' type='radio' id='ban' value='ban'/>
-				    				<label for='ban'>Ban Account</label>
-   									<input type='submit' class='btn' value='submit'/>
-				    			</form></td>
-				    		</tr>";  
+			    		echo "<td><form class='center grey lighten-4' method='post' action='customer_account.php?id=$id'>
+			    				<input name='account' type='radio' id='ok' value='active' checked/>
+			    				<label for='ok'>Active Account</label>
+
+			    				<input name='account' type='radio' id='ban' value='ban'/>
+			    				<label for='ban'>Ban Account</label>
+									<input type='submit' class='btn green white-text' value='submit'/>
+			    			</form></td>
+			    		</tr>";  
 				    }
 				    echo "</tbody>
 				    	</table>";
@@ -79,7 +85,7 @@
 				        			<th>Customer Name</th>
 				        			<th>Email Address</th>
 				        			<th>Account Status</th>
-				        			<th>Action</th>
+				        			<th class='tableLeft'>Action</th>
 				        		</tr>
 				        	</thead>
 				        	<tbody>";
@@ -95,16 +101,22 @@
 				    	echo "<tr>
 				    			<td>$first_name".' ' ."$last_name</td>
 				    			<td>$email</td>
-				    			<td>$status</td>
-				    			<td><form class='center grey lighten-4' method='post' action='customer_account.php?id=$id'>
-				    				<input name='account' type='radio' id='ok$x' value='active' checked/>
-				    				<label for='ok$x'>Active Account</label>
+				    			";
+				    	if($status == 'Active'){
+			    			echo "<td><p class='green-text'>$status</p></td>";
+			    		}else if($status == 'Ban'){
+			    			echo "<td><p class='red-text'>$status</p></td>";
+			    		}
 
-				    				<input name='account' type='radio' id='ban$x' value='ban'/>
-				    				<label for='ban$x'>Ban Account</label>
-   									<input type='submit' class='btn' value='submit'/>
-				    			</form></td>
-				    		</tr>"; 
+			    		echo "<td><form class='center grey lighten-4' method='post' action='customer_account.php?id=$id'>
+			    				<input name='account' type='radio' id='ok$x' value='active' checked/>
+			    				<label for='ok$x'>Active Account</label>
+
+			    				<input name='account' type='radio' id='ban$x' value='ban'/>
+			    				<label for='ban$x'>Ban Account</label>
+									<input type='submit' class='btn green white-text' value='submit'/>
+			    			</form></td>
+			    		</tr>";  
 				    		$x++;
 				    } 
 				    echo "</tbody>

@@ -4,11 +4,14 @@
 
  ?>
 
-<div class="row center viewWearCont">
-	<ul id="tabs-swipe-demo" class="tabs">
-		<li class="tab col s3"><a class="active green-text" href="#cat">Search By Category</a></li>
-		<li class="tab col s3"><a href="#searchName" class=" green-text">Search by Name</a></li>
-	</ul>
+<div class="row viewWearCont">
+	<div class="row">
+		<ul id="tabs-swipe-demo" class="tabs">
+			<li class="tab col s3 l4 m4"><a class="active green-text" href="#cat">Search By Category</a></li>
+			<li class="tab col s3 l4 m4"><a href="#searchName" class=" green-text">Search by Name</a></li>
+			<li class="tab col s3 l4 m4"><a href="#pendingOrders" class=" green-text">Pending Orders</a></li>
+		</ul>
+	</div>
 	<div class="row"  id="cat">
 	<div class="col l12 m12 s12">
 		<h5 class="z-depth-3 green lighten-1 white-text">History Order</h5>
@@ -49,6 +52,10 @@
 						
 				    </ul>
 				</div>
+				
+		</div>
+		<div class="col l3 s6 m6" style="padding-top: 20px;">
+			<a href="admin_view_orders.php#searchName" class="btn green white-text">view all</a>
 		</div>
 		<div class="row">
 			<div class="col l12 s12 m12 grey lighten-4" id="searchBody">
@@ -56,16 +63,16 @@
 				<?php 
 				if (isset($_GET['id'])) {
 				$user = $_GET['id'];
-
-				echo "<div class='col l12 m12 s12 center'>
-					<h5 class='z-depth-3 green lighten-1 white-text'>History Order</h5>
-					</div>";
-				
-				echo "<ul class='collection with-header'>";
 				$sql1 = "SELECT * FROM users WHERE user_name = '$user'";
 				$result1 = mysqli_query($conn,$sql1);
 				$users = mysqli_fetch_assoc($result1);
 				$id = $users['id'];
+
+				echo "<div class='col l12 m12 s12 center'>
+					<h5 class='z-depth-3 green lighten-1 white-text'>Transaction History</h5>
+					</div>";
+				
+				echo "<ul class='collection'>";
 
 				$sql = "SELECT date_purchased,id FROM purchase_order WHERE user_id = '$id'";
 				$result = mysqli_query($conn,$sql);
@@ -74,8 +81,8 @@
 					$timestamp = date('F j, Y, g:i a',strtotime($date));
 					$pur_id1 = $item['id'];
 					
-					echo "<li class='collection-header green lighten-1 white-text '><h4 >$timestamp</h4></li>";
-										$sql2 = "SELECT * FROM order_details WHERE user_id = '$id'";
+					echo "<li class='collection-item green lighten-1 white-text '><p style='margin: 0;'>$timestamp</p></li>";
+					$sql2 = "SELECT * FROM order_details WHERE user_id = '$id'";
 					$result2 = mysqli_query($conn,$sql2);
 					while($row = mysqli_fetch_assoc($result2)) {
 						$cat = $row['category_id'];
@@ -84,41 +91,87 @@
 						$result3 = mysqli_query($conn,$sql3);
 						while($rows = mysqli_fetch_assoc($result3)) {
 							$pur_id = $rows['purchase_id'];
+							$cat_ide = $rows['category_id'];
 							$items = $rows['item_id'];
 						// $date = $row['date_purchased'];
-					
-					
-					// echo $item['category_id'];
-					if ($rows['category_id'] == 1) {
-						$sql2 = "SELECT name,price FROM phone_tablet WHERE id = '$items'";
-						$result2 = mysqli_query($conn,$sql2);
-						$row = mysqli_fetch_assoc($result2);
-						$name = $row['name'];
-						$price = $row['price'];
-						echo "<li class='collection-item'>
-							<div><p>$name<p>
-							<p>Php: $price<p></div></li>";
-						
-					}else if ($rows['category_id'] == 3) {
-						$sql2 = "SELECT name,price FROM wears WHERE id = '$items'";
-						$result2 = mysqli_query($conn,$sql2);
-						$row = mysqli_fetch_assoc($result2);
-						$price = $row['price'];
-						$name = $row['name'];
-						echo "<li class='collection-item'>
-							<div><p>$name<p>
-							<p>Php: $price<p></div></li>";
+
+							$sql4 = "SELECT * FROM category WHERE id = '$cat_ide'";
+							$result4 = mysqli_query($conn,$sql4);
+							while($cat_id = mysqli_fetch_assoc($result4)){
+								$cat_name = $cat_id['category_name'];	
+							// echo $item['category_id'];
+							if ($rows['category_id'] == 1) {
+								$sql2 = "SELECT name,price FROM phone_tablet WHERE id = '$items'";
+								$result2 = mysqli_query($conn,$sql2);
+								$row = mysqli_fetch_assoc($result2);
+								$name = $row['name'];
+								$price = $row['price'];
+								echo "<li class='collection-item'>
+									<div><p>$name</p>
+									<p>Php: $price</p>
+									<p>Category: $cat_name</p>
+
+									</div></li>";
+								
+							}else if ($rows['category_id'] == 3) {
+								$sql2 = "SELECT name,price FROM wears WHERE id = '$items'";
+								$result2 = mysqli_query($conn,$sql2);
+								$row = mysqli_fetch_assoc($result2);
+								$price = $row['price'];
+								$name = $row['name'];
+								echo "<li class='collection-item'>
+									<div><p>$name<p>
+									<p>Php: $price<p>
+									<p>Category: $cat_name</p>
+									</div></li>";
+							}
+						}
 					}
 				}
 			}
-		}
 			echo "</ul>";
 	}else{
-		echo "<h1>No records TO show</h1>";	
+		echo "<table>
+				        	<thead class='green'>
+				        		<tr>
+				        			<th>Customer Name</th>
+				        			<th>Email Address</th>
+				        			<th>View</th>
+				        		</tr>
+				        	</thead>
+				        	<tbody>";
+				    $sql = "SELECT * FROM users WHERE role = 'regular'";
+				    $result = mysqli_query($conn,$sql);
+				    while($cust = mysqli_fetch_assoc($result)){
+				    	$id = $cust['id'];
+				    	$users = $cust['user_name'];
+				    	$status = ucfirst($cust['status']);
+				    	$first_name = ucfirst($cust['first_name']);   
+				    	$last_name = ucfirst($cust['last_name']); 
+				    	$email = $cust['email_address'];
+				    	echo "<tr>
+				    			<td>$first_name".' ' ."$last_name</td>
+				    			<td>$email</td>
+				    			";
+			    		echo "<td>
+								<a href='admin_view_orders.php?id=$users#searchName' class='btn green white-text'>View orders</a>
+			    			</td>
+			    		</tr>";  
+				    } 
+				    echo "</tbody>
+				    	</table>";	
 	}
 				?>
 
 			</div>
+		</div>
+	</div>
+	<div class="row" id="pendingOrder">
+		<div class="col l12 m12 s12">
+			<h5 class="z-depth-3 green lighten-1 white-text center">Pending Order</h5>
+		</div>
+		<div class="row">
+			
 		</div>
 	</div>
 </div>

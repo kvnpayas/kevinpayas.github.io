@@ -18,7 +18,7 @@
 	        </thead>
 	        <tbody>
 	        <?php
-	        $sql = "SELECT * FROM purchase_order";
+	        $sql = "SELECT * FROM purchase_order WHERE delivery_status = 'delivered'";
 	        $result =  mysqli_query($conn,$sql);
 			while($row = mysqli_fetch_assoc($result)){
 				$total_order = $row['total_price'];

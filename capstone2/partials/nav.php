@@ -44,7 +44,7 @@ if(isset($_SESSION['username'])){
 					echo isset($_SESSION['username']) ? '<li><span class="black-text">Welcome '.$user.'</span></li>' : '' ;
 					?>
 					<li class="divider"></li>
-					<li><a href="#!" class="green-text">Edit Profile</a></li>
+					<li><a href="user_edit_profile.php" class="green-text">Edit Profile</a></li>
 					<li class="divider"></li>
 					<li><a href="order_history.php" class="green-text">View order History</a></li>
 					<li class="divider"></li>
