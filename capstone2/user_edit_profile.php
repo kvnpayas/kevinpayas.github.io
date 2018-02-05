@@ -1,4 +1,7 @@
-
+<?php function title(){
+	echo "Edit Profile Page";
+}
+?>
 <?php function display_content(){
 	require 'connection.php';
 	$username = $_SESSION['username'];

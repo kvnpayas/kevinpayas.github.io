@@ -1,4 +1,7 @@
-
+<?php function title(){
+	echo "View Cart";
+}
+?>
 <?php function display_content(){
 	require 'connection.php';
 	?>
@@ -8,7 +11,7 @@
 			<h5 class="z-depth-3 green lighten-1 white-text">Cart</h5>
 			<?php 
     		if (isset($_GET['msg'])){
-     		 	echo "<script>Materialize.toast('Remove Item Success', 3000);</script>"; 
+     		 	echo "<script>Materialize.toast('Item Removed', 3000);</script>"; 
     		}
   			?>
 		</div>
@@ -52,14 +55,31 @@
 		
 		<div class="row">
 			<div class="col l12 m12 s12">
+				<?php if (isset($_SESSION['username'])){ ?>
 				<p><a href="#checkout" class="btn green modal-trigger">Proceed to Checkout</a></p>
+				<?php }else{ ?>
+				<p><a href="#checkoutLogin" class="btn green modal-trigger">Proceed to Checkout</a></p>
+				<?php } ?>
 			</div>
 		</div>
+
 	<?php }else { ?>
 	<h2>No item to display</h2>
 	<p><a href="index.php#shop">Continue Shopping</a></p>
 	<?php } ?>
 	</div>
+
+<div id="checkoutLogin" class="modal">
+    <div class="modal-content">
+      <h5 class="center">You have to log in first</h5>
+      <p class="center">click here to <a href="#modal1" class="modal-trigger modal-action modal-close">Login/Register</a></p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat red white-text">CANCEL</a>
+    </div>
+  </div>
+
+
 	<div id="checkout" class="modal">
     <div class="modal-content">
       <h4>Proceed?</h4>

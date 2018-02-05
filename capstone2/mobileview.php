@@ -1,4 +1,7 @@
-
+<?php function title(){
+	echo "Mobile View Page";
+}
+?>
 <?php function display_content(){
 	require 'connection.php';
 

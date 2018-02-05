@@ -15,6 +15,27 @@ main {
 	height: 100%;*/
 }
 
+/* Index */
+
+.ourTeams {
+	/*width: 80%;	*/
+	height: 100vh;
+	/*background-color: grey;*/
+	/*position: relative;*/
+}
+#img1 {
+	width: 383px;
+	height: 328px;
+}
+#img2 {
+	width: 380px;
+	height: 270px;
+}
+.meetImg {
+	width: 260px;
+}
+
+/* Navigation */
 #divnav {
 	position: absolute;
 	z-index:999999999;
@@ -56,8 +77,14 @@ main {
    /*box-shadow: 0 1px 0 0 green !important*/
  }
 
- .modal {
+ /*.modal {
  	width: 45% !important;
+ }*/
+
+ @media only screen and (max-width: 320px){
+ 	.modal {
+ 		width: 100% !important;
+	 }
  }
 
  #logosize {

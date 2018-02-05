@@ -12,8 +12,12 @@ if(isset($_SESSION['username'])){
 			<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons green-text">menu</i></a>
 			<ul class="right hide-on-med-and-down">
 				<li><a href="#" class="green-text font dropdown-button" data-activates='dropdown1'>Shopping<i class="material-icons right green-text">arrow_drop_down</i></a></li>
-				<li><a href="badges.html" class="green-text font">About Us</a></li>
 				<li><a href="#contactUs" class="green-text font">Contact Us</a></li>
+				<?php if (isset($_SESSION['role']) && $_SESSION['role']=='admin'){ ?>
+					
+				<?php }else{?>
+				<li><a href="cart.php" class="green-text font"><i class="large material-icons left green-text">add_shopping_cart</i>Cart</a></li>
+				<?php } ?>
 				<?php if(isset($_SESSION['username'])){
 
 				}else {
@@ -48,7 +52,6 @@ if(isset($_SESSION['username'])){
 					<li class="divider"></li>
 					<li><a href="order_history.php" class="green-text">View order History</a></li>
 					<li class="divider"></li>
-					<li><a href="cart.php" class="green-text"><i class="large material-icons left green-text">add_shopping_cart</i>Cart</a></li>
 					<li class="divider"></li>
 					<li><a href="logout.php" class="green-text">Log Out</a></li>
 				</ul>
@@ -102,8 +105,6 @@ if(isset($_SESSION['username'])){
 										<li class="divider"></li>
 										<li><a href="order_history.php" class="green-text">View order History</a></li>
 										<li class="divider"></li>
-										<li><a href="cart.php" class="green-text"><i class="material-icons left green-text">add_shopping_cart</i>Cart</a></li>
-										<li class="divider"></li>
 										<li><a href="logout.php" class="green-text">Log Out</a></li>
 									<?php } ?>
 								</ul>
@@ -115,7 +116,7 @@ if(isset($_SESSION['username'])){
 				<li class="no-padding">
 					<ul class="collapsible collapsible-accordion">
 						<li>
-							<a class="collapsible-header">Shopping<i class="material-icons">arrow_drop_down</i></a>
+							<a class="collapsible-header green-text">Shopping<i class="material-icons">arrow_drop_down</i></a>
 							<div class="collapsible-body">
 								<ul>
 									<li><a href="mobile.php" class="green-text"><i class="material-icons left green-text">phone_android</i>Mobile</a></li>
@@ -128,9 +129,13 @@ if(isset($_SESSION['username'])){
 					</ul>
 				</li>
 				<li class="divider"></li>
-				<li><a href="#!">About Us</a></li>
+				<?php if (isset($_SESSION['role']) && $_SESSION['role']=='admin'){ ?>
+					
+				<?php }else{?>
+				<li><a href="cart.php" class="green-text"><i class="material-icons left green-text">add_shopping_cart</i>Cart</a></li>
 				<li class="divider"></li>
-				<li><a href="index.php#contactUs">Contact Us</a></li>
+				<?php } ?>
+				<li><a href="index.php#contactUs" class="green-text">Contact Us</a></li>
 				<li class="divider"></li>
 			</ul>
 </div>

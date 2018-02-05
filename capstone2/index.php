@@ -1,4 +1,9 @@
 
+<?php function title(){
+	echo "Home Page";
+}
+?>
+
 <?php function display_content(){ ?>
 
 <div class="slider">
@@ -38,7 +43,7 @@
 	</ul>
 </div>
 
-<div class="section white"  id="shop">
+<div class="section grey lighten-4 center"  id="shop">
 	<div class="row container">
 
 		<div class="row">
@@ -47,13 +52,13 @@
 		<ul id="stagered-test">
 			<div class="row">
 				<li>
-					<div class="col l6">
-						<img src="assets/img/pixel2.png" class="responsive-img img-scroll" id="img1">
+					<div class="col l6 m12 s12 center">
+						<img src="assets/img/google_pixel.png" class="responsive-img img-scroll" id="img1">
 						<p class="center-align"><a href="mobile.php" class="btn green">BROWSE PHONES</a></p>
 					</div>
 				</li>
 				<li>
-					<div class="col l6">
+					<div class="col l6 m12 s12 center">
 						<img src="assets/img/pixel-c.jpg" class="responsive-img img-scroll">
 						<p class="center-align"><a href="#" class="btn green">BROWSE TABLETS</a></p>
 					</div>
@@ -63,13 +68,13 @@
 		<ul id="stagered-test2">
 			<div class="row">
 				<li>	
-					<div class="col l6">
-						<img src="assets/img/fossil-q.png" class="responsive-img img-scroll">
+					<div class="col l6 m12 s12 center">
+						<img src="assets/img/watch.png" class="responsive-img img-scroll" id="img2">
 						<p class="center-align"><a href="wear.php" class="btn green">BROWSE WEARS</a></p>
 					</div>
 				</li>
 				<li>	
-					<div class="col l6">
+					<div class="col l6 m12 s12 center">
 						<img src="assets/img/bravia.png" class="responsive-img img-scroll">
 						<p class="center-align"><a href="#" class="btn green">BROWSE TV</a></p>
 					</div>
@@ -79,7 +84,35 @@
 	</div>
 </div>
 <div class="parallax-container">
-	<div class="parallax backgroundImage"><img src="assets/img/bg1.jpg"></div>
+
+	<div class="parallax backgroundImage"><img src="assets/img/bg1.jpg">
+		
+	</div>
+	<div class="container green lighten-1 z-depth-4">
+			<div class="ourTeams">
+			<h4 class="center">Our Team</h4>
+			<div class="row center">
+				<div class="col l4 s12 m12">
+					<img src="assets/img/meet.jpg" class="circle meetImg">
+					<div class="divider"></div>
+					<h5>Kevin Jordan</h5>
+					<p>EX B</p>
+				</div>
+				<div class="col l4 s12 m12">
+					<img src="assets/img/meet.jpg" class="circle meetImg">
+					<div class="divider"></div>
+					<h5>Kevin Jordan</h5>
+					<p>EX B</p>
+				</div>
+				<div class="col l4 s12 m12">
+					<img src="assets/img/meet.jpg" class="circle meetImg">
+					<div class="divider"></div>
+					<h5>Kevin Jordan</h5>
+					<p>EX B</p>
+				</div>
+			</div>	
+			</div>
+		</div>
 </div>
 
 <?php } 

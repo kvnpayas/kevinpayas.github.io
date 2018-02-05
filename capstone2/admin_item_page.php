@@ -1,4 +1,7 @@
-
+<?php function title(){
+	echo "Admin Product Page";
+}
+?>
 <?php function display_content(){
 	require 'connection.php'; ?>
 	<div class="section mainSection">
@@ -287,6 +290,7 @@
 								</div>
 							</div>
 						</li>
+						
 						<li>
 							<div class="collapsible-header"><i class="material-icons">watch</i>Watch</div>
 							<div class="collapsible-body">
@@ -356,22 +360,30 @@
 
 							</div>
 						</div>
+						<?php 
+			    		if (isset($_GET['msg'])){
+			     		 	echo "<script>Materialize.toast('Remove Item Success', 3000);</script>"; 
+			    		}
+			  			?>
 						<div id="delete" class="col s12 ">
 							<div class="row">
-							<div class="input-field col l3">
-								<select id="categories">
-									<option value="select" selected disabled="">Select Category</option>
-									<?php
-									$sql = "SELECT * FROM category";
-									$result = mysqli_query($conn, $sql);
-									while($rows = mysqli_fetch_assoc($result)) {
-										?>
-										<option value="<?php echo $rows['id'] ?>"><?php echo $rows['category_name'] ?></option>
-										<?php } ?>
-									</select>
+								<div class="input-field col l3">
+									<select id="categoriesDelete">
+										<option value="all" selected disabled="">Select Category</option>
+										<?php
+										$sql = "SELECT * FROM category";
+										$result = mysqli_query($conn, $sql);
+										while($rows = mysqli_fetch_assoc($result)) {
+											?>
+											<option value="<?php echo $rows['id'] ?>"><?php echo $rows['category_name'] ?></option>
+											<?php } ?>
+									</select>	
 
 									<label>Choose Products</label>
 								</div>
+							</div>
+							<div class="row grey lighten-4" id="product-body-delete">
+
 							</div>
 						</div>
 					</div>

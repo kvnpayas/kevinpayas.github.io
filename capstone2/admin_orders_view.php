@@ -117,9 +117,10 @@
 	        </thead>
 	        <tbody>
 	        <?php 
-	        $sql = "SELECT DISTINCT purchase_order.id, purchase_order.date_purchased FROM purchase_order LEFT JOIN order_details ON(purchase_order.id = order_details.purchase_id) WHERE order_details.category_id = 1 AND purchase_order.id = order_details.purchase_id";
+	        $sql = "SELECT DISTINCT purchase_order.id, purchase_order.date_purchased,purchase_order.total_price FROM purchase_order LEFT JOIN order_details ON(purchase_order.id = order_details.purchase_id) WHERE order_details.category_id = 1 AND purchase_order.id = order_details.purchase_id AND purchase_order.delivery_status = 'delivered'";
 	        $result = mysqli_query($conn,$sql);
 	        while($pur = mysqli_fetch_assoc($result)){
+	        	$total_order = $pur['total_price'];
 	        	$id = $pur['id'];
 	        	$date = $pur['date_purchased'];
 				$timestamp = date('F j, Y, g:i a',strtotime($date));
@@ -169,6 +170,13 @@
 						}
 					}
 		        }
+		        echo "<tr>";
+				echo "<td></td>";
+				echo "<td></td>";
+				echo "<td></td>";
+				echo "<td></td>";
+				echo "<td>Total: Php $total_order</td>";
+				echo "</tr>";
 	        }
 
 
@@ -192,7 +200,7 @@
 	        </thead>
 	        <tbody>
 	        <?php
-	        $sql = "SELECT DISTINCT * FROM purchase_order";
+	        $sql = "SELECT DISTINCT purchase_order.id, purchase_order.date_purchased,purchase_order.total_price FROM purchase_order LEFT JOIN order_details ON(purchase_order.id = order_details.purchase_id) WHERE order_details.category_id = 3 AND purchase_order.id = order_details.purchase_id AND purchase_order.delivery_status = 'delivered'";
 	        $result =  mysqli_query($conn,$sql);
 			while($row = mysqli_fetch_assoc($result)){
 				$total_order = $row['total_price'];

@@ -2,37 +2,7 @@
 <!-- Modal Structure -->
 <div id="modal1" class="modal">
   <div class="modal-content">
-<!--     <h5 class="center-align font green-text">LOG IN</h5> -->
-   <!--  <div class="container">
-      <div class="z-depth-1 grey lighten-4 row" style="padding: 32px 48px 0px 48px; border: 2px solid green;">
 
-        <form class="col s12" method="post" action="authenticate.php">
-
-
-          <div class='row'>
-            <div class='input-field col s12'>
-              <input class='validate' type='text' name='username' id='username' />
-              <label for='username'>Enter your username</label>
-            </div>
-          </div>
-
-          <div class='row'>
-            <div class='input-field col s12'>
-              <input class='validate' type='password' name='password' id='password' />
-              <label for='password'>Enter your password</label>
-            </div>
-            <label class="right">
-              <a class='green-text' href='register.php'><b>Register Here</b></a>
-            </label>
-          </div>
-
-
-          <div class='row'>
-            <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect green'>Login</button>
-          </div>
-        </form>
-      </div>
-    </div> -->
     <div class="container white z-depth-2" id="cont">
   <ul class="tabs teal row" id="rowCont">
     <li class="tab col s6"><a class="white-text active" href="#login" id="tabsColor">login</a></li>
@@ -58,7 +28,7 @@
               echo "<span class='red-text'>Wrong Username or Password</span>";
             }
             if(isset($_GET['ban'])){
-              echo "<span class='red-text'>BAN KN BOBO</span>";
+              echo "<span class='red-text'>Sorry your account has been banned</span>";
             }
           ?>
         </div>

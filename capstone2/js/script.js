@@ -7,31 +7,37 @@ $(document).ready(function(){
 	$('.collapsibleUser').collapsible();
 	$('select').material_select();
 	$('.materialize-textarea').trigger('autoresize');
+	$('.modal').modal();
+	$('#checkoutLogin').modal();
 	$('.button-collapse').sideNav({
       menuWidth: 300, // Default is 300
       edge: 'left', // Choose the horizontal origin
       closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
       draggable: true, // Choose whether you can drag to open on touch screens,
-    }
-  );
+    });
+
 	$('.carousel.carouselImage').carousel({
 		dist: 0,
 		indicators: true,
 		padding: 550
 	});
+
 	$('div#carouselProd2').carousel({
 		indicators: true,
 		dist: 0,
 		padding: 200,
 		noWrap: false
 	});
+
 	$('div#carouselWears').carousel({
 		indicators: true,
 		dist: -100,
 		padding: 400,
 		noWrap: true
 	});
-	autoplay()   
+
+	autoplay();
+
 	function autoplay() {
     $('.carousel.carouselImage').carousel('next');
     setTimeout(autoplay, 4500);
@@ -57,6 +63,7 @@ $(document).ready(function(){
 		Materialize.fadeInImage($(el));
 	} }
 	];
+
 	Materialize.scrollFire(options);
 
 	$('#modal1').modal({
@@ -67,8 +74,8 @@ $(document).ready(function(){
       startingTop: '4%', // Starting top style attribute
       endingTop: '10%', // Ending top style attribute
        // Callback for Modal close
-   }
-   );
+   });
+
 	$('#checkout').modal();
 
 	$('.dropdown-button').dropdown({
@@ -187,11 +194,8 @@ $(document).ready(function(){
 			}
 		});   
 	}
-
-	getAllorder();
-
-	$("#categoriesorder").change(function()
-	{    
+	 getAllorder();
+	$("#categoriesorder").change(function(){    
 		var id = $(this).find(":selected").val();
 
 		var dataString = 'category='+ id;
@@ -208,20 +212,38 @@ $(document).ready(function(){
 		});
 	});
 
-	if ($("#check-form .itemCol input:checkbox:checked").length > 1) {
-
-		alert("hello");
+	function getAllorderDelete(){
+		$.ajax
+		({
+			url: 'admin_delete_product_view.php',
+			data: 'category=all',
+			cache: false,
+			success: function(data)
+			{
+				$("#product-body-delete").html(data);
+			}
+		});   
 	}
 
-	// $("#delivery_add").val("Get Current Address or type another delivery address");
+	getAllorderDelete();
 
-// 	$(".addGet").click(function() {
-//     $.get("addGet.php", {param: $(this).attr('id')}, 
-//         function(data) {
-//             $('#delivery_add').val(data);
-//         });    
-//     return false;
-// });
+	$("#categoriesDelete").change(function()
+	{    
+		var id = $(this).find(":selected").val();
+
+		var dataString = 'category='+ id;
+
+		$.ajax
+		({
+			url: 'admin_delete_product_view.php',
+			data: dataString,
+			cache: false,
+			success: function(data)
+			{
+				$("#product-body-delete").html(data);
+			} 
+		});
+	});
 
 	$(".getAdd").click(function(){
 		var users = $(this).attr('id');
@@ -239,21 +261,6 @@ $(document).ready(function(){
 		});
 	});
 
-	// $(".clickSearch").click(function(){
-	// 	var users = $(this).attr('id');
-	// 	alert("asdad");
-	// 	$.ajax({
-	// 		method: "post",
-	// 		url: 'search_by_name.php',
-	// 		data: {
-	// 			users : users
-	// 		},
-	// 		success: function(data){
-	// 			alert(data);
-	// 			$("#searchBody").html(data);
-	// 		}
-	// 	});
-	// });
 
 	$('#autocomplete-input').keyup(function(){
 		var name =$('#autocomplete-input').val();
@@ -275,6 +282,33 @@ $(document).ready(function(){
 			});
 		});
 
+	$(".confirmed").click(function(){
+		var index = $(this).data('index');
+		// var cat = $(this).data('cat')
+		console.log(index);
+		$.ajax({
+			method: 'post',
+			url: 'confirmation.php',
+			data: {
+				index : index
+				// cat : cat
+			},
+			success: function(data){
+				$("#modal_con_body").html(data);
+			}
+		})
+	});
+	
+	// $(".delete_modal").click(function(){
+	// 	var index = $(this).data('index');
+	// 	console.log(index);
+	// 	$.post('delete_modal_endpoint.php',{
+	// 		index : index
+	// 	},function(data){
+	// 		$('#delete-body').html(data);
+	// 	});
+	// });
+
 });
 
 function allFilled() {
@@ -295,3 +329,5 @@ function allFilled1() {
 
 
 }
+
+

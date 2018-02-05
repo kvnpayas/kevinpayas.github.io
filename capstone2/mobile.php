@@ -1,4 +1,7 @@
-
+<?php function title(){
+	echo "Mobile Page";
+}
+?>
 <?php function display_content(){
 	require 'connection.php';
  ?>
@@ -43,7 +46,7 @@
 					
 					<div class="col l12 m12 s12 center viewWearCont">
 						<a href="editproduct.php?index=<?php echo $item['id'] ?>" class="btn blue white-text"><i class="large material-icons left white-text">edit</i>Edit</a>
-						<a href="#" class="btn red white-text"><i class="large material-icons left white-text">delete</i>Delete</a>
+						<a href="delete_page.php?index=<?php echo $item['id'] ?>&&cat=<?php echo $item['category_id']; ?>" class="btn red white-text">Delete</a>
 					</div>
 			<?php		
 				} else {

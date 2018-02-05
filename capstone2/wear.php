@@ -1,9 +1,13 @@
 
+<?php function title(){
+	echo "Wear Page";;
+}
+?>
 <?php function display_content(){
 	require 'connection.php';
 	?>
 
-	<div class="row">
+	<div class="row grey lighten-4">
 		<div class="col l6 m12 s12 wearCont center">
 			<h3>Follow your fitness</h3>
 			<p>Track walks, runs, rides, and strength training from Google Fit and your favorite apps. Get fitness coaching, measure your heart rate, and even stream music, right from your wrist. Android Wear watches with cellular connectivity let you use your favorite apps, even when you leave your phone behind.</p>
@@ -83,7 +87,7 @@
 					
 					<div class="col l12 m12 s12 center viewWearCont">
 						<a href="editproduct_wear.php?index=<?php echo $item['id'] ?>" class="btn blue white-text"><i class="large material-icons left white-text">edit</i>Edit</a>
-						<a href="#" class="btn red white-text"><i class="large material-icons left white-text">delete</i>Delete</a>
+						<a href="delete_page.php?index=<?php echo $id; ?>&&cat=<?php echo $cat_wear; ?>" class="btn red white-text">Delete</a>
 					</div>
 			<?php		
 				} else {

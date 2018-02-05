@@ -1,4 +1,7 @@
-
+<?php function title(){
+	echo "Search Name Page";
+}
+?>
 <?php function display_content(){	
 	require 'connection.php';
  ?>

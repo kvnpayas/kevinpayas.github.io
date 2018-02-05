@@ -9,7 +9,7 @@
 
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 
-	<title></title>
+	<title><?php title(); ?></title>
 
 	<!-- Imnports custom stylesheets -->
 	<link rel="stylesheet" type="text/css" href="css/style.css">
@@ -29,12 +29,15 @@
 	<!--Import materialize.js-->
 	<script type="text/javascript" src="materialize/js/materialize.js"></script>
 
+	<!-- <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script> -->
+
 </head>
 <body>
 	
 	<?php require('partials/nav.php') ?>
 	<?php require('login_register_page.php') ?>
 	<main>
+
 	<?php 
     if(isset($_GET['modal'])){
     echo "<script>

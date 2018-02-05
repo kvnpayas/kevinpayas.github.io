@@ -1,4 +1,7 @@
-
+<?php function title(){
+	echo "Edit Wear Page";
+}
+?>
 <?php function display_content(){
 	require 'connection.php'; 
 	$id = $_GET['index'];

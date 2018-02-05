@@ -1,3 +1,8 @@
+<?php function title(){
+	
+	echo "Wear View Page";
+}
+?>
 <?php function display_content(){
 	require 'connection.php';
 

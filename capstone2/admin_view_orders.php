@@ -1,15 +1,29 @@
-
+<?php function title(){
+	echo "View Orders";
+}
+?>
 <?php function display_content(){	
 	require 'connection.php';
 
  ?>
+ <?php 
+	if (isset($_GET['msg'])){
+		echo "<script>Materialize.toast('Update Success', 3000);</script>"; 
+	}
+	?> 
 
 <div class="row viewWearCont">
 	<div class="row">
 		<ul id="tabs-swipe-demo" class="tabs">
 			<li class="tab col s3 l4 m4"><a class="active green-text" href="#cat">Search By Category</a></li>
 			<li class="tab col s3 l4 m4"><a href="#searchName" class=" green-text">Search by Name</a></li>
-			<li class="tab col s3 l4 m4"><a href="#pendingOrders" class=" green-text">Pending Orders</a></li>
+			<?php 
+				$sql9 = "SELECT COUNT(*) as num FROM purchase_order WHERE delivery_status = 'pending'";
+				$result9 = mysqli_query($conn, $sql9);
+				$count = mysqli_fetch_assoc($result9);
+				$count1 = $count['num'];
+				?>
+			<li class="tab col s3 l3 m4"><a href="#pendingOrders" class=" green-text">Pending Orders<span class="new badge red white-text"><?php echo $count1 ?></span></a></li>
 		</ul>
 	</div>
 	<div class="row"  id="cat">
@@ -67,9 +81,11 @@
 				$result1 = mysqli_query($conn,$sql1);
 				$users = mysqli_fetch_assoc($result1);
 				$id = $users['id'];
+				$cust_firstname = strtoupper($users['first_name']);
+				$cust_lastname = strtoupper($users['last_name']);
 
 				echo "<div class='col l12 m12 s12 center'>
-					<h5 class='z-depth-3 green lighten-1 white-text'>Transaction History</h5>
+					<h5 class='z-depth-3 green lighten-1 white-text'>Transaction History of $cust_firstname $cust_lastname</h5>
 					</div>";
 				
 				echo "<ul class='collection'>";
@@ -166,16 +182,62 @@
 			</div>
 		</div>
 	</div>
-	<div class="row" id="pendingOrder">
+	<div class="row grey lighten-4" id="pendingOrders">
 		<div class="col l12 m12 s12">
-			<h5 class="z-depth-3 green lighten-1 white-text center">Pending Order</h5>
+			<h5 class="z-depth-3 green lighten-1 white-text center">Pending Order</h5
 		</div>
 		<div class="row">
-			
+			<div class="col l12 s12 m12">
+				<table>
+					<thead>
+						<tr>
+							<th>Order No.</th>
+							<th>Customer Name</th>
+							<th>Date Purchased</th>
+							<th>Total Price</th>
+							<th>Status</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php 
+						$sql = "SELECT purchase_order.id,purchase_order.date_purchased,purchase_order.delivery_status,purchase_order.total_price,purchase_order.user_id, users.first_name,users.last_name FROM purchase_order JOIN users ON(purchase_order.user_id = users.id)  WHERE delivery_status = 'pending' AND purchase_order.user_id = users.id";
+						$result = mysqli_query($conn, $sql);
+						while($pur = mysqli_fetch_assoc($result)){
+							$order_no = $pur['id'];
+							$date = $pur['date_purchased'];
+							$timestamp = date('F j, Y',strtotime($date));
+							$status = $pur['delivery_status'];
+							$total = $pur['total_price'];
+							$cust_id = $pur['user_id'];
+
+							// $sql1 = "SELECT * FROM users WHERE id = $'cust_id'"; 
+							// $result1 = mysqli_query($conn, $sql1);
+							// $cust = mysqli_fetch_assoc($result1);
+							$first_name = ucfirst($pur['first_name']);
+							$last_name = ucfirst($pur['last_name']);
+
+							echo "<tr>";
+							echo "<td>$order_no</td>";
+							echo "<td>$first_name $last_name</td>";
+							echo "<td>$timestamp</td>";
+							echo "<td>Php: $total</td>";
+							echo "<td>$status</td>";
+							echo "<td><button data-target='confirmation' class='btn modal-trigger confirmed green white-text' data-index='$order_no'>Delivered</button></td>";
+							echo "</tr>";
+						}
+						?>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 </div>
-
+<div id="confirmation" class="modal confirmed">
+	<div id="modal_con_body">
+    
+  </div>
+  </div>
 
 <?php } 
 require "template.php";

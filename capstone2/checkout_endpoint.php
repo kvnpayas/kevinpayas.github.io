@@ -15,7 +15,7 @@ $result = mysqli_query($conn,$sql);
 			$user = mysqli_fetch_assoc($result);
 $user_id = $user['id'];
 
-$sql3 = "INSERT INTO purchase_order (total_price,user_id) VALUES ($totalPrice,$user_id)";
+$sql3 = "INSERT INTO purchase_order (total_price,user_id,delivery_status) VALUES ($totalPrice,$user_id,'pending')";
 	mysqli_query($conn,$sql3);
 	$purchase_id = mysqli_insert_id($conn);
 

@@ -1,4 +1,7 @@
-
+<?php function title(){
+	echo "Order History Page";
+}
+?>
 <?php function display_content(){	
 	require 'connection.php';
  ?>

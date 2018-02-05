@@ -1,4 +1,7 @@
-
+<?php function title(){
+	echo "View Customer";
+}
+?>
 <?php function display_content(){	
 	require 'connection.php';
 
